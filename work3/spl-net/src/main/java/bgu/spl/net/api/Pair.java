@@ -2,27 +2,27 @@ package bgu.spl.net.api;
 
 public class Pair {
 
-    private String H;
     private String K;
+    private String V;
 
     public Pair(String h, String k) {
-        H = h;
-        K = k;
-    }
-
-    public String getH() {
-        return H;
+        K = h;
+        V = k;
     }
 
     public String getK() {
         return K;
     }
 
-    public void setH(String h) {
-        H = h;
+    public String getV() {
+        return V;
     }
 
     public void setK(String k) {
         K = k;
+    }
+
+    public void setV(String v) {
+        V = v;
     }
 }
