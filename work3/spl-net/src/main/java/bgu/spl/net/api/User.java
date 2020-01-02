@@ -9,6 +9,7 @@ public class User {
     private ArrayList <Book> books;
     private ArrayList <Genre> genres;
     private Integer conID;
+    private boolean connected = false;
 
     //---------constructors-----------
 
@@ -41,4 +42,27 @@ public class User {
         this.genres.remove(genre);
     }
 
+    public boolean isConnected() {
+        return connected;
+    }
+
+    public void setConnected(boolean connected) {
+        this.connected = connected;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void clearAllGenres(){
+        // Remove the user from all genre lists
+        for (Genre g : genres){
+            g.removeUser(this);
+        }
+        genres.clear();
+    }
 }

@@ -1,6 +1,11 @@
 package bgu.spl.net.actions;
 
+import bgu.spl.net.Frames.Receipt;
+import bgu.spl.net.api.DataStructure;
+import bgu.spl.net.api.User;
 import bgu.spl.net.impl.rci.Command;
+import bgu.spl.net.srv.Connections;
+import bgu.spl.net.srv.ConnectionsImpl;
 
 import java.io.Serializable;
 
@@ -14,22 +19,36 @@ public class Login implements Command {
     }
 
     @Override
-    public Serializable execute(Object arg) {
+    public Serializable execute(Object arg, Integer connectionId , Connections con) {
+        // check if user exist
+        if(DataStructure.usersArchiveByName.containsKey(userName)){
+            User u = DataStructure.usersArchiveByName.get(userName);
 
-        // Socket error
+            // already logged in
+            if(u.isConnected()){
+                con.send(connectionId.intValue(),new Error()); // TODO: add error frame
+            }
 
-        // if the user is not exist
+            // Wrong password
+            else if(!u.getPassword().equals(passWord)){
+                con.send(connectionId.intValue(),new Error()); // TODO: add error frame wrong password
+            }
 
+            // successful connection
+            else if(u.getPassword().equals(passWord)){
+                u.setConnected(true);
+                con.send(connectionId.intValue(),new Error()); // TODO: add CONNECTED frame wrong password
+            }
+        }
+        // create new user
+        else {
+            User u = new User(this.userName , this.passWord , connectionId);
+            u.setConnected(true);
+            DataStructure.usersArchiveByName.put(this.userName , u);
+            DataStructure.userByConnectionID.put(connectionId , u);
 
-
-        //if the user exist
-
-        //if wrong password
-
-
-
-
-
+            con.send(connectionId, new Receipt(connectionId)); //TODO add CONNECTED that the user created
+        }
         return null;
     }
 }

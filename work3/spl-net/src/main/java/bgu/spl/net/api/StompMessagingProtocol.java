@@ -8,7 +8,7 @@ public interface StompMessagingProtocol  {
 	**/
     void start(int connectionId, Connections<String> connections);
     
-    void process(STOMP message);
+    void process(String message);
 	
 	/**
      * @return true if the connection should be terminated

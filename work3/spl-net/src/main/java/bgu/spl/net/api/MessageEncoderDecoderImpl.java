@@ -10,28 +10,10 @@ public class MessageEncoderDecoderImpl implements MessageEncoderDecoder {
 
     @Override
     public Object decodeNextByte(byte nextByte){
-        STOMP toReturn = new STOMP();
-        int line = 0;
 
-        if (nextByte == '\0'){
-            return toReturn;
-        }
 
-        if(nextByte == '\n'){
-            String s = popString();
-            if (line == 0){
-                toReturn.setCommand(s);
-                line++;
-            }
-            if(line > 0 && s.contains(":")){
-                String [] sp = s.split(":");
-                toReturn.addHeaders(new Pair(sp[0],sp[1]));
-                line++;
-            }
-            else{
-                toReturn.setBody(s);
-                line++;
-            }
+        if(nextByte == '\0'){
+            return popString();
         }
         pushByte(nextByte);
 
