@@ -30,6 +30,10 @@ public class Genre {
         this.books.add(book);
     }
 
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
     /*
     public synchronized Book borrowBook (String name){
         for ( ) {

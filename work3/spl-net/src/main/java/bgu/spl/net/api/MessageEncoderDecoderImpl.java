@@ -1,5 +1,10 @@
 package bgu.spl.net.api;
 
+import bgu.spl.net.Frames.Connect;
+import bgu.spl.net.Frames.ErrorFrame;
+import bgu.spl.net.Frames.Message;
+import bgu.spl.net.Frames.Receipt;
+
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
@@ -23,7 +28,7 @@ public class MessageEncoderDecoderImpl implements MessageEncoderDecoder {
 
     @Override
     public byte[] encode(Object message) {
-        return new byte[0];
+        return encodeByInstance(message);
     }
 
     private void pushByte(byte nextByte) {
@@ -41,5 +46,22 @@ public class MessageEncoderDecoderImpl implements MessageEncoderDecoder {
         len = 0;
         bytes = new byte[1 << 10];
         return result;
+    }
+
+    private byte[] encodeByInstance(Object m){
+
+        if(m instanceof Receipt){
+            return ((Receipt) m).encode();
+        }
+        if(m instanceof Message){
+            return ((Message) m).encode();
+        }
+        if(m instanceof ErrorFrame){
+            return ((ErrorFrame) m).encode();
+        }
+        if(m instanceof Connect){
+            return ((Connect) m).encode();
+        }
+        return new byte[0];
     }
 }

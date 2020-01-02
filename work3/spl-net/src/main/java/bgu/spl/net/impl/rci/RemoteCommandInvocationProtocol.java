@@ -1,6 +1,9 @@
 package bgu.spl.net.impl.rci;
 
 import bgu.spl.net.api.MessagingProtocol;
+import bgu.spl.net.srv.ConnectionsImpl;
+
+import java.io.IOException;
 import java.io.Serializable;
 
 public class RemoteCommandInvocationProtocol<T> implements MessagingProtocol<Serializable> {
@@ -12,8 +15,8 @@ public class RemoteCommandInvocationProtocol<T> implements MessagingProtocol<Ser
     }
 
     @Override
-    public Serializable process(Serializable msg) {
-        return ((Command) msg).execute(arg);
+    public Serializable process(Serializable msg) throws IOException {
+        return ((Command) msg).execute(arg , 1 , new ConnectionsImpl());
     }
 
     @Override

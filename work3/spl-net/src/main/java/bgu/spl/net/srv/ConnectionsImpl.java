@@ -1,14 +1,20 @@
 package bgu.spl.net.srv;
 
+import bgu.spl.net.api.DataStructure;
+import bgu.spl.net.api.Genre;
+import bgu.spl.net.api.User;
+import bgu.spl.net.impl.rci.Command;
+
+import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ConnectionsImpl implements Connections<String> {
+public class ConnectionsImpl<T> implements Connections<T> {
     private ConcurrentHashMap<Integer,ConnectionHandler> connections = new ConcurrentHashMap<>();
     private Integer con_id = 0;
 
 
     @Override
-    public boolean send(int connectionId, String msg) {
+    public boolean send(int connectionId, T msg) throws IOException {
         if (connections.containsKey(connectionId)){
             connections.get(connectionId).send(msg);
             return true;
@@ -19,7 +25,10 @@ public class ConnectionsImpl implements Connections<String> {
     }
 
     @Override
-    public void send(String channel, String msg) {
+    public void send(String channel, T msg) throws IOException {
+        for (User u: DataStructure.genres.get(channel).getUsers()) {
+            send(u.getConID(), msg);
+        }
 
     }
 
@@ -29,6 +38,8 @@ public class ConnectionsImpl implements Connections<String> {
             con_id++;
         }
     }
+
+    // TODO: think if we need to add remove connection
 
     @Override
     public void disconnect(int connectionId) {

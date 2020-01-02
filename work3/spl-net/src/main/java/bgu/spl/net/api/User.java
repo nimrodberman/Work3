@@ -65,4 +65,8 @@ public class User {
         }
         genres.clear();
     }
+
+    public Integer getConID() {
+        return conID;
+    }
 }
