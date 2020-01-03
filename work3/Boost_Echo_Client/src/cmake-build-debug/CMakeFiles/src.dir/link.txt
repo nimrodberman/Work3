@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/src.dir/connectionHandler.cpp.o CMakeFiles/src.dir/echoClient.cpp.o CMakeFiles/src.dir/Client.cpp.o CMakeFiles/src.dir/Stomp.cpp.o CMakeFiles/src.dir/StompToByte.cpp.o  -o src 
