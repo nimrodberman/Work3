@@ -23,14 +23,13 @@ public class Subscribe implements Command {
     @Override
     public Serializable execute(Object arg, Integer connectionId, Connections con) throws IOException {
         if(!DataStructure.genres.containsKey(club)){
-            con.send(connectionId,new ErrorFrame("The genre dosent exist" , "" , String.valueOf(this.receipt)));
+            con.send(connectionId,new ErrorFrame("The genre does not exist" , "" , String.valueOf(this.receipt)));
         }
 
         else{
-            DataStructure.genres.get(club).addUser(DataStructure.userByConnectionID.get(this.ID));
-            //update user info
-            DataStructure.userByConnectionID.get(this.ID).subscribeGenre(DataStructure.genres.get(club));
-
+            DataStructure.genres.get(club).addUser(DataStructure.userByConnectionID.get(connectionId)); // add user to genre
+            DataStructure.userByConnectionID.get(connectionId).subscribeGenre(ID,DataStructure.genres.get(club)); //update user info
+            // send a certification
             con.send(connectionId,new Receipt(receipt));
         }
         return null;

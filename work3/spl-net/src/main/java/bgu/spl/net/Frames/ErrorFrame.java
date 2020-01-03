@@ -18,7 +18,7 @@ public class ErrorFrame extends ServerToClientFrames {
 
         String command = "ERROR\n";
         String tmp = "receipt-id:" + this.mID +"\n";
-        String end = "\n\n\0";
-        return  (command + tmp + error + body + end).getBytes(StandardCharsets.UTF_8); //TODO: understand how to fucking do it
+        String end = "\0";
+        return  (command + tmp + error + "\n\n" + body + end).getBytes(StandardCharsets.UTF_8); //TODO: understand how to fucking do it
     }
 }

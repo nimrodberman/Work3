@@ -7,13 +7,17 @@ public class Genre {
     //----------fields-----------
 
     private String topic;
+    private int id;
+    private static int counter = 1;
     private ArrayList <User> users = new ArrayList<>();
-    private ArrayList <Book> books = new ArrayList<Book>();
+    private ArrayList <BookItem> books = new ArrayList<BookItem>();
 
     //-------constuctor-------
 
-    public Genre(String topic) {
-        this.topic = topic;
+    public Genre(String s) {
+        this.topic = s;
+        id = counter;
+        counter++;
     }
 
     //-----------methods-----------
@@ -26,7 +30,7 @@ public class Genre {
         this.users.remove(user);
     }
 
-    public synchronized void addBook (Book book){
+    public synchronized void addBook (BookItem book){
         this.books.add(book);
     }
 

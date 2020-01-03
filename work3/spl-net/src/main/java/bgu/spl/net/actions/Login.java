@@ -31,7 +31,7 @@ public class Login implements Command {
 
             // already logged in
             if(u.isConnected()){
-                con.send(connectionId.intValue(),new ErrorFrame("User is already logged in","" , this.mID));
+                con.send(connectionId,new ErrorFrame("User is already logged in","" , this.mID));
             }
 
             // Wrong password

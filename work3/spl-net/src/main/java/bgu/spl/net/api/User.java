@@ -1,13 +1,16 @@
 package bgu.spl.net.api;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class User {
     //-------------fields-------------
     private String name;
     private String password;
-    private ArrayList <Book> books;
-    private ArrayList <Genre> genres;
+    private ArrayList <BookItem> books;
+    private ConcurrentHashMap<Integer,Genre> genres;
     private Integer conID;
     private boolean connected = false;
 
@@ -18,28 +21,28 @@ public class User {
         this.name = name;
         this.password = password;
         this.conID = conID;
-        this.books = new ArrayList<Book>();
-        this.genres = new ArrayList<Genre>();
+        this.books = new ArrayList<BookItem>();
+        this.genres = new ConcurrentHashMap<Integer, Genre>();
     }
 
-    public void addBook (Book book){
+    public void addBook (BookItem book){
         this.books.add(book);
     }
 
-    public void borrowBook (Book book){
+    public void borrowBook (BookItem book){
             this.books.remove(book);
     }
 
-    public boolean bookIsExist(Book book){
+    public boolean bookIsExist(BookItem book){
         return this.books.contains(book);
     }
 
-    public void subscribeGenre (Genre genre){
-        this.genres.add(genre);
+    public void subscribeGenre (Integer in ,Genre genre){
+        this.genres.put(in, genre);
     }
 
-    public void unsubscribeGenre (Genre genre){
-        this.genres.remove(genre);
+    public void unsubscribeGenre (Integer in){
+        this.genres.remove(in);
     }
 
     public boolean isConnected() {
@@ -60,8 +63,10 @@ public class User {
 
     public void clearAllGenres(){
         // Remove the user from all genre lists
-        for (Genre g : genres){
-            g.removeUser(this);
+        Iterator it = genres.entrySet().iterator();
+        for (Map.Entry<Integer, Genre> entry : genres.entrySet()){
+            Integer key = entry.getKey();
+            genres.get(key).removeUser(this);
         }
         genres.clear();
     }
