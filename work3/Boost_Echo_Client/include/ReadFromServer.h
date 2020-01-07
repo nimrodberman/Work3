@@ -6,12 +6,24 @@
 #define BOOST_ECHO_CLIENT_READFROMSERVER_H
 
 
+#include "connectionHandler.h"
+#include "Stomp.h"
+#include "UserData.h"
+
 class ReadFromServer {
 public:
-    void ReadFromServer::operator()()
+    ReadFromServer(UserData* u, ConnectionHandler con);
+    void ReadFromServer::operator();
 
 private:
     ConnectionHandler &connectionHandler;
+    UserData* data;
+
+    void decode(std::string in);
+    std::vector<std::string> split(std::string s, std::string delimiter);
+    Stomp toStomp(std::vector<std::string> s);
+
+    void messageProcceser(Message& mes);
 
 };
 

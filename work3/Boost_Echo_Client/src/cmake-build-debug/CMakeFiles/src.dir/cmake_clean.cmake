@@ -1,7 +1,13 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/src.dir/Book.cpp.o"
   "CMakeFiles/src.dir/Client.cpp.o"
+  "CMakeFiles/src.dir/Message.cpp.o"
+  "CMakeFiles/src.dir/ReadFromKeyboard.cpp.o"
+  "CMakeFiles/src.dir/ReadFromServer.cpp.o"
+  "CMakeFiles/src.dir/Receipt.cpp.o"
   "CMakeFiles/src.dir/Stomp.cpp.o"
   "CMakeFiles/src.dir/StompToByte.cpp.o"
+  "CMakeFiles/src.dir/UserData.cpp.o"
   "CMakeFiles/src.dir/connectionHandler.cpp.o"
   "CMakeFiles/src.dir/echoClient.cpp.o"
   "src"

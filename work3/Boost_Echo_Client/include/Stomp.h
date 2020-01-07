@@ -21,8 +21,15 @@ public:
 
     std::string toString();
 
+    const std::string &getStompCommand() const;
+
+    const std::vector<std::string> &getHeaders() const;
+
+    const std::string &getFrameBody() const;
 
     virtual ~Stomp();
+
+    std::vector<char> stompToByte();
 
 };
 

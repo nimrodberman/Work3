@@ -1,4 +1,4 @@
-# Install script for directory: /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src
+# Install script for directory: /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

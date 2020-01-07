@@ -43,10 +43,10 @@ RM = /users/studs/bsc/2020/oronla/Desktop/clion-2019.2.5/bin/cmake/linux/bin/cma
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src
+CMAKE_SOURCE_DIR = /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/cmake-build-debug
+CMAKE_BINARY_DIR = /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/src.dir/depend.make
@@ -59,68 +59,146 @@ include CMakeFiles/src.dir/flags.make
 
 CMakeFiles/src.dir/connectionHandler.cpp.o: CMakeFiles/src.dir/flags.make
 CMakeFiles/src.dir/connectionHandler.cpp.o: ../connectionHandler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/src.dir/connectionHandler.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/src.dir/connectionHandler.cpp.o -c /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/connectionHandler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/src.dir/connectionHandler.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/src.dir/connectionHandler.cpp.o -c /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/connectionHandler.cpp
 
 CMakeFiles/src.dir/connectionHandler.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/src.dir/connectionHandler.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/connectionHandler.cpp > CMakeFiles/src.dir/connectionHandler.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/connectionHandler.cpp > CMakeFiles/src.dir/connectionHandler.cpp.i
 
 CMakeFiles/src.dir/connectionHandler.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/src.dir/connectionHandler.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/connectionHandler.cpp -o CMakeFiles/src.dir/connectionHandler.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/connectionHandler.cpp -o CMakeFiles/src.dir/connectionHandler.cpp.s
 
 CMakeFiles/src.dir/echoClient.cpp.o: CMakeFiles/src.dir/flags.make
 CMakeFiles/src.dir/echoClient.cpp.o: ../echoClient.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/src.dir/echoClient.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/src.dir/echoClient.cpp.o -c /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/echoClient.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/src.dir/echoClient.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/src.dir/echoClient.cpp.o -c /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/echoClient.cpp
 
 CMakeFiles/src.dir/echoClient.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/src.dir/echoClient.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/echoClient.cpp > CMakeFiles/src.dir/echoClient.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/echoClient.cpp > CMakeFiles/src.dir/echoClient.cpp.i
 
 CMakeFiles/src.dir/echoClient.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/src.dir/echoClient.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/echoClient.cpp -o CMakeFiles/src.dir/echoClient.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/echoClient.cpp -o CMakeFiles/src.dir/echoClient.cpp.s
 
 CMakeFiles/src.dir/Client.cpp.o: CMakeFiles/src.dir/flags.make
 CMakeFiles/src.dir/Client.cpp.o: ../Client.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/src.dir/Client.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/src.dir/Client.cpp.o -c /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/Client.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/src.dir/Client.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/src.dir/Client.cpp.o -c /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/Client.cpp
 
 CMakeFiles/src.dir/Client.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/src.dir/Client.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/Client.cpp > CMakeFiles/src.dir/Client.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/Client.cpp > CMakeFiles/src.dir/Client.cpp.i
 
 CMakeFiles/src.dir/Client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/src.dir/Client.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/Client.cpp -o CMakeFiles/src.dir/Client.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/Client.cpp -o CMakeFiles/src.dir/Client.cpp.s
 
 CMakeFiles/src.dir/Stomp.cpp.o: CMakeFiles/src.dir/flags.make
 CMakeFiles/src.dir/Stomp.cpp.o: ../Stomp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/src.dir/Stomp.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/src.dir/Stomp.cpp.o -c /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/Stomp.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/src.dir/Stomp.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/src.dir/Stomp.cpp.o -c /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/Stomp.cpp
 
 CMakeFiles/src.dir/Stomp.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/src.dir/Stomp.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/Stomp.cpp > CMakeFiles/src.dir/Stomp.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/Stomp.cpp > CMakeFiles/src.dir/Stomp.cpp.i
 
 CMakeFiles/src.dir/Stomp.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/src.dir/Stomp.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/Stomp.cpp -o CMakeFiles/src.dir/Stomp.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/Stomp.cpp -o CMakeFiles/src.dir/Stomp.cpp.s
 
 CMakeFiles/src.dir/StompToByte.cpp.o: CMakeFiles/src.dir/flags.make
 CMakeFiles/src.dir/StompToByte.cpp.o: ../StompToByte.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/src.dir/StompToByte.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/src.dir/StompToByte.cpp.o -c /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/StompToByte.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/src.dir/StompToByte.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/src.dir/StompToByte.cpp.o -c /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/StompToByte.cpp
 
 CMakeFiles/src.dir/StompToByte.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/src.dir/StompToByte.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/StompToByte.cpp > CMakeFiles/src.dir/StompToByte.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/StompToByte.cpp > CMakeFiles/src.dir/StompToByte.cpp.i
 
 CMakeFiles/src.dir/StompToByte.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/src.dir/StompToByte.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/StompToByte.cpp -o CMakeFiles/src.dir/StompToByte.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/StompToByte.cpp -o CMakeFiles/src.dir/StompToByte.cpp.s
+
+CMakeFiles/src.dir/UserData.cpp.o: CMakeFiles/src.dir/flags.make
+CMakeFiles/src.dir/UserData.cpp.o: ../UserData.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/src.dir/UserData.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/src.dir/UserData.cpp.o -c /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/UserData.cpp
+
+CMakeFiles/src.dir/UserData.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/src.dir/UserData.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/UserData.cpp > CMakeFiles/src.dir/UserData.cpp.i
+
+CMakeFiles/src.dir/UserData.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/src.dir/UserData.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/UserData.cpp -o CMakeFiles/src.dir/UserData.cpp.s
+
+CMakeFiles/src.dir/Book.cpp.o: CMakeFiles/src.dir/flags.make
+CMakeFiles/src.dir/Book.cpp.o: ../Book.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/src.dir/Book.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/src.dir/Book.cpp.o -c /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/Book.cpp
+
+CMakeFiles/src.dir/Book.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/src.dir/Book.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/Book.cpp > CMakeFiles/src.dir/Book.cpp.i
+
+CMakeFiles/src.dir/Book.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/src.dir/Book.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/Book.cpp -o CMakeFiles/src.dir/Book.cpp.s
+
+CMakeFiles/src.dir/Receipt.cpp.o: CMakeFiles/src.dir/flags.make
+CMakeFiles/src.dir/Receipt.cpp.o: ../Receipt.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/src.dir/Receipt.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/src.dir/Receipt.cpp.o -c /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/Receipt.cpp
+
+CMakeFiles/src.dir/Receipt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/src.dir/Receipt.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/Receipt.cpp > CMakeFiles/src.dir/Receipt.cpp.i
+
+CMakeFiles/src.dir/Receipt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/src.dir/Receipt.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/Receipt.cpp -o CMakeFiles/src.dir/Receipt.cpp.s
+
+CMakeFiles/src.dir/Message.cpp.o: CMakeFiles/src.dir/flags.make
+CMakeFiles/src.dir/Message.cpp.o: ../Message.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/src.dir/Message.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/src.dir/Message.cpp.o -c /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/Message.cpp
+
+CMakeFiles/src.dir/Message.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/src.dir/Message.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/Message.cpp > CMakeFiles/src.dir/Message.cpp.i
+
+CMakeFiles/src.dir/Message.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/src.dir/Message.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/Message.cpp -o CMakeFiles/src.dir/Message.cpp.s
+
+CMakeFiles/src.dir/ReadFromKeyboard.cpp.o: CMakeFiles/src.dir/flags.make
+CMakeFiles/src.dir/ReadFromKeyboard.cpp.o: ../ReadFromKeyboard.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/src.dir/ReadFromKeyboard.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/src.dir/ReadFromKeyboard.cpp.o -c /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/ReadFromKeyboard.cpp
+
+CMakeFiles/src.dir/ReadFromKeyboard.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/src.dir/ReadFromKeyboard.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/ReadFromKeyboard.cpp > CMakeFiles/src.dir/ReadFromKeyboard.cpp.i
+
+CMakeFiles/src.dir/ReadFromKeyboard.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/src.dir/ReadFromKeyboard.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/ReadFromKeyboard.cpp -o CMakeFiles/src.dir/ReadFromKeyboard.cpp.s
+
+CMakeFiles/src.dir/ReadFromServer.cpp.o: CMakeFiles/src.dir/flags.make
+CMakeFiles/src.dir/ReadFromServer.cpp.o: ../ReadFromServer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/src.dir/ReadFromServer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/src.dir/ReadFromServer.cpp.o -c /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/ReadFromServer.cpp
+
+CMakeFiles/src.dir/ReadFromServer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/src.dir/ReadFromServer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/ReadFromServer.cpp > CMakeFiles/src.dir/ReadFromServer.cpp.i
+
+CMakeFiles/src.dir/ReadFromServer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/src.dir/ReadFromServer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/ReadFromServer.cpp -o CMakeFiles/src.dir/ReadFromServer.cpp.s
 
 # Object files for target src
 src_OBJECTS = \
@@ -128,7 +206,13 @@ src_OBJECTS = \
 "CMakeFiles/src.dir/echoClient.cpp.o" \
 "CMakeFiles/src.dir/Client.cpp.o" \
 "CMakeFiles/src.dir/Stomp.cpp.o" \
-"CMakeFiles/src.dir/StompToByte.cpp.o"
+"CMakeFiles/src.dir/StompToByte.cpp.o" \
+"CMakeFiles/src.dir/UserData.cpp.o" \
+"CMakeFiles/src.dir/Book.cpp.o" \
+"CMakeFiles/src.dir/Receipt.cpp.o" \
+"CMakeFiles/src.dir/Message.cpp.o" \
+"CMakeFiles/src.dir/ReadFromKeyboard.cpp.o" \
+"CMakeFiles/src.dir/ReadFromServer.cpp.o"
 
 # External object files for target src
 src_EXTERNAL_OBJECTS =
@@ -138,9 +222,15 @@ src: CMakeFiles/src.dir/echoClient.cpp.o
 src: CMakeFiles/src.dir/Client.cpp.o
 src: CMakeFiles/src.dir/Stomp.cpp.o
 src: CMakeFiles/src.dir/StompToByte.cpp.o
+src: CMakeFiles/src.dir/UserData.cpp.o
+src: CMakeFiles/src.dir/Book.cpp.o
+src: CMakeFiles/src.dir/Receipt.cpp.o
+src: CMakeFiles/src.dir/Message.cpp.o
+src: CMakeFiles/src.dir/ReadFromKeyboard.cpp.o
+src: CMakeFiles/src.dir/ReadFromServer.cpp.o
 src: CMakeFiles/src.dir/build.make
 src: CMakeFiles/src.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable src"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable src"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/src.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -153,6 +243,6 @@ CMakeFiles/src.dir/clean:
 .PHONY : CMakeFiles/src.dir/clean
 
 CMakeFiles/src.dir/depend:
-	cd /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/cmake-build-debug /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/cmake-build-debug /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles/src.dir/DependInfo.cmake --color=$(COLOR)
+	cd /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles/src.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/src.dir/depend
 

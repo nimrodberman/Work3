@@ -12,6 +12,7 @@
 #include "Stomp.h"
 
 class Client {
+
 private:
     std::vector <std::string> headers;
     std::string input;

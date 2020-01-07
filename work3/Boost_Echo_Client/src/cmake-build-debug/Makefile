@@ -48,10 +48,10 @@ RM = /users/studs/bsc/2020/oronla/Desktop/clion-2019.2.5/bin/cmake/linux/bin/cma
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src
+CMAKE_SOURCE_DIR = /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/cmake-build-debug
+CMAKE_BINARY_DIR = /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /users/studs/bsc/2020/oronla/Desktop/work4/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /users/studs/bsc/2020/oronla/Desktop/Work3-7.1/work3/Boost_Echo_Client/src/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,6 +123,33 @@ src/fast:
 	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/build
 .PHONY : src/fast
 
+Book.o: Book.cpp.o
+
+.PHONY : Book.o
+
+# target to build an object file
+Book.cpp.o:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/Book.cpp.o
+.PHONY : Book.cpp.o
+
+Book.i: Book.cpp.i
+
+.PHONY : Book.i
+
+# target to preprocess a source file
+Book.cpp.i:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/Book.cpp.i
+.PHONY : Book.cpp.i
+
+Book.s: Book.cpp.s
+
+.PHONY : Book.s
+
+# target to generate assembly for a file
+Book.cpp.s:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/Book.cpp.s
+.PHONY : Book.cpp.s
+
 Client.o: Client.cpp.o
 
 .PHONY : Client.o
@@ -149,6 +176,114 @@ Client.s: Client.cpp.s
 Client.cpp.s:
 	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/Client.cpp.s
 .PHONY : Client.cpp.s
+
+Message.o: Message.cpp.o
+
+.PHONY : Message.o
+
+# target to build an object file
+Message.cpp.o:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/Message.cpp.o
+.PHONY : Message.cpp.o
+
+Message.i: Message.cpp.i
+
+.PHONY : Message.i
+
+# target to preprocess a source file
+Message.cpp.i:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/Message.cpp.i
+.PHONY : Message.cpp.i
+
+Message.s: Message.cpp.s
+
+.PHONY : Message.s
+
+# target to generate assembly for a file
+Message.cpp.s:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/Message.cpp.s
+.PHONY : Message.cpp.s
+
+ReadFromKeyboard.o: ReadFromKeyboard.cpp.o
+
+.PHONY : ReadFromKeyboard.o
+
+# target to build an object file
+ReadFromKeyboard.cpp.o:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ReadFromKeyboard.cpp.o
+.PHONY : ReadFromKeyboard.cpp.o
+
+ReadFromKeyboard.i: ReadFromKeyboard.cpp.i
+
+.PHONY : ReadFromKeyboard.i
+
+# target to preprocess a source file
+ReadFromKeyboard.cpp.i:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ReadFromKeyboard.cpp.i
+.PHONY : ReadFromKeyboard.cpp.i
+
+ReadFromKeyboard.s: ReadFromKeyboard.cpp.s
+
+.PHONY : ReadFromKeyboard.s
+
+# target to generate assembly for a file
+ReadFromKeyboard.cpp.s:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ReadFromKeyboard.cpp.s
+.PHONY : ReadFromKeyboard.cpp.s
+
+ReadFromServer.o: ReadFromServer.cpp.o
+
+.PHONY : ReadFromServer.o
+
+# target to build an object file
+ReadFromServer.cpp.o:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ReadFromServer.cpp.o
+.PHONY : ReadFromServer.cpp.o
+
+ReadFromServer.i: ReadFromServer.cpp.i
+
+.PHONY : ReadFromServer.i
+
+# target to preprocess a source file
+ReadFromServer.cpp.i:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ReadFromServer.cpp.i
+.PHONY : ReadFromServer.cpp.i
+
+ReadFromServer.s: ReadFromServer.cpp.s
+
+.PHONY : ReadFromServer.s
+
+# target to generate assembly for a file
+ReadFromServer.cpp.s:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ReadFromServer.cpp.s
+.PHONY : ReadFromServer.cpp.s
+
+Receipt.o: Receipt.cpp.o
+
+.PHONY : Receipt.o
+
+# target to build an object file
+Receipt.cpp.o:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/Receipt.cpp.o
+.PHONY : Receipt.cpp.o
+
+Receipt.i: Receipt.cpp.i
+
+.PHONY : Receipt.i
+
+# target to preprocess a source file
+Receipt.cpp.i:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/Receipt.cpp.i
+.PHONY : Receipt.cpp.i
+
+Receipt.s: Receipt.cpp.s
+
+.PHONY : Receipt.s
+
+# target to generate assembly for a file
+Receipt.cpp.s:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/Receipt.cpp.s
+.PHONY : Receipt.cpp.s
 
 Stomp.o: Stomp.cpp.o
 
@@ -203,6 +338,33 @@ StompToByte.s: StompToByte.cpp.s
 StompToByte.cpp.s:
 	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/StompToByte.cpp.s
 .PHONY : StompToByte.cpp.s
+
+UserData.o: UserData.cpp.o
+
+.PHONY : UserData.o
+
+# target to build an object file
+UserData.cpp.o:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/UserData.cpp.o
+.PHONY : UserData.cpp.o
+
+UserData.i: UserData.cpp.i
+
+.PHONY : UserData.i
+
+# target to preprocess a source file
+UserData.cpp.i:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/UserData.cpp.i
+.PHONY : UserData.cpp.i
+
+UserData.s: UserData.cpp.s
+
+.PHONY : UserData.s
+
+# target to generate assembly for a file
+UserData.cpp.s:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/UserData.cpp.s
+.PHONY : UserData.cpp.s
 
 connectionHandler.o: connectionHandler.cpp.o
 
@@ -267,15 +429,33 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... src"
 	@echo "... edit_cache"
+	@echo "... Book.o"
+	@echo "... Book.i"
+	@echo "... Book.s"
 	@echo "... Client.o"
 	@echo "... Client.i"
 	@echo "... Client.s"
+	@echo "... Message.o"
+	@echo "... Message.i"
+	@echo "... Message.s"
+	@echo "... ReadFromKeyboard.o"
+	@echo "... ReadFromKeyboard.i"
+	@echo "... ReadFromKeyboard.s"
+	@echo "... ReadFromServer.o"
+	@echo "... ReadFromServer.i"
+	@echo "... ReadFromServer.s"
+	@echo "... Receipt.o"
+	@echo "... Receipt.i"
+	@echo "... Receipt.s"
 	@echo "... Stomp.o"
 	@echo "... Stomp.i"
 	@echo "... Stomp.s"
 	@echo "... StompToByte.o"
 	@echo "... StompToByte.i"
 	@echo "... StompToByte.s"
+	@echo "... UserData.o"
+	@echo "... UserData.i"
+	@echo "... UserData.s"
 	@echo "... connectionHandler.o"
 	@echo "... connectionHandler.i"
 	@echo "... connectionHandler.s"

@@ -6,12 +6,23 @@
 #define BOOST_ECHO_CLIENT_RECIEPT_H
 
 
+#include <string>
+
 class Receipt {
 public:
-    Receipt(int ID);
+    Receipt(const std::string &action, const std::string &topic);
+
 private:
+    int static counter;
     int id;
-    bool isDone;
+    std::string action;
+    std::string topic;
+
+public:
+    static int getCounter();
+    int getId() const;
+    const std::string &getAction() const;
+    void Procces();
 
 };
 
