@@ -10,10 +10,10 @@ import java.io.Serializable;
 
 public class Disconnect implements Command {
 
-    private int reciept_number;
+    private String recieptID;
 
-    public Disconnect(int recnumber) {
-        this.reciept_number = recnumber;
+    public Disconnect(String recieptID) {
+        this.recieptID = recieptID;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class Disconnect implements Command {
         DataStructure.userByConnectionID.get(connectionId).clearAllGenres();
         // disconnect
         DataStructure.userByConnectionID.get(connectionId).setConnected(false);
-        con.send(connectionId,new Receipt(reciept_number));
+        con.send(connectionId,new Receipt(this.recieptID));
 
         return null;
     }

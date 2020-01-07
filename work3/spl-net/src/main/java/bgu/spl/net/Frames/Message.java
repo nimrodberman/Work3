@@ -4,16 +4,16 @@ import java.nio.charset.StandardCharsets;
 
 public class Message extends ServerToClientFrames {
 
-    private int subscription;
+    private String subscriptionID;
     private static int counter = 1;
     private int msgID;
-    String des;
+    private String topic;
     String body;
 
 
-    public Message(int subscription, String des, String body) {
-        this.subscription = subscription;
-        this.des = des;
+    public Message(String subscription, String des, String body) {
+        this.subscriptionID = subscription;
+        this.topic = des;
         this.body = body;
         this.msgID = counter;
         counter++;
@@ -22,10 +22,10 @@ public class Message extends ServerToClientFrames {
     @Override
     public byte[] encode() {
         String command = "MESSAGE\n";
-        String id = "id:" + this.subscription +"\n";
-        String msg_id = "Message-id:" + Integer.toString(msgID) + "\n";
+        String id = "id:" + this.subscriptionID +"\n";
+        String msg_id = "Message-id:" + msgID + "\n";
         String gap  = "\n\n";
         String end = "\0";
-        return  (command + id + msg_id + des + gap + end).getBytes(StandardCharsets.UTF_8);
+        return  (command + id + msg_id + this.topic + gap + end).getBytes(StandardCharsets.UTF_8);
     }
 }

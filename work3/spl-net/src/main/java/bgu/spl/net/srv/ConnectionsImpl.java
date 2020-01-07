@@ -1,9 +1,7 @@
 package bgu.spl.net.srv;
 
 import bgu.spl.net.api.DataStructure;
-import bgu.spl.net.api.Genre;
 import bgu.spl.net.api.User;
-import bgu.spl.net.impl.rci.Command;
 
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
@@ -26,7 +24,7 @@ public class ConnectionsImpl<T> implements Connections<T> {
 
     @Override
     public void send(String channel, T msg) throws IOException {
-        for (User u: DataStructure.genres.get(channel).getUsers()) {
+        for (User u: DataStructure.topics.get(channel).getUsers()) {
             send(u.getConID(), msg);
         }
 

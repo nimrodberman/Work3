@@ -9,40 +9,26 @@ public class User {
     //-------------fields-------------
     private String name;
     private String password;
-    private ArrayList <BookItem> books;
-    private ConcurrentHashMap<Integer,Genre> genres;
+    private ConcurrentHashMap<String, Topic> topicsOfUser;
     private Integer conID;
     private boolean connected = false;
 
     //---------constructors-----------
 
 
-    public User(String name, String password, Integer conID) {
+    public User(String name, String password, int conID) {
         this.name = name;
         this.password = password;
         this.conID = conID;
-        this.books = new ArrayList<BookItem>();
-        this.genres = new ConcurrentHashMap<Integer, Genre>();
+        this.topicsOfUser = new ConcurrentHashMap<String, Topic>();
     }
 
-    public void addBook (BookItem book){
-        this.books.add(book);
+    public void subscribeGenre (String subscriptionID , Topic topic){
+        this.topicsOfUser.put(subscriptionID, topic);
     }
 
-    public void borrowBook (BookItem book){
-            this.books.remove(book);
-    }
-
-    public boolean bookIsExist(BookItem book){
-        return this.books.contains(book);
-    }
-
-    public void subscribeGenre (Integer in ,Genre genre){
-        this.genres.put(in, genre);
-    }
-
-    public void unsubscribeGenre (Integer in){
-        this.genres.remove(in);
+    public void unsubscribeGenre (String subscriptionID){
+        this.topicsOfUser.remove(subscriptionID);
     }
 
     public boolean isConnected() {
@@ -62,13 +48,25 @@ public class User {
     }
 
     public void clearAllGenres(){
-        // Remove the user from all genre lists
-        Iterator it = genres.entrySet().iterator();
-        for (Map.Entry<Integer, Genre> entry : genres.entrySet()){
-            Integer key = entry.getKey();
-            genres.get(key).removeUser(this);
+        // Remove the user from all genre lists]
+        for (Topic topic: this.topicsOfUser.values()) {
+            DataStructure.topics.get(topic).removeUser(this);
         }
-        genres.clear();
+        topicsOfUser.clear();
+    }
+
+    public String getSubscription(String topic){
+        Iterator it = this.topicsOfUser.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            if (pair.getValue() == topic)
+                return (String) pair.getKey();
+        }
+        return null;
+    }
+
+    public Topic getTopicBySubscription(String subscriptionID){
+        return this.topicsOfUser.get(subscriptionID);
     }
 
     public Integer getConID() {

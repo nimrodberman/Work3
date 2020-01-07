@@ -1,6 +1,5 @@
 package bgu.spl.net.Frames;
 
-import sun.nio.cs.UTF_8;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -11,10 +10,10 @@ import java.util.List;
 public class Receipt extends ServerToClientFrames{
     private String conID;
 
-    public Receipt(int conID) {
+    public Receipt(String conID) {
 
         // TODO: understand how to serialize the object and how to decode it
-        this.conID = String.valueOf(conID);
+        this.conID = conID;
     }
 
     public byte[] encode(){

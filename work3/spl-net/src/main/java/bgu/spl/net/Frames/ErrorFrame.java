@@ -2,23 +2,23 @@ package bgu.spl.net.Frames;
 
 import java.nio.charset.StandardCharsets;
 
-public class ErrorFrame extends ServerToClientFrames {
+public class ErrorFrame extends ServerToClientFrames {//TODO: understand how to fucking do it
 
     private String error;
     private String body;
-    private String mID;
+    private String reciptID;
 
     public ErrorFrame(String error, String body , String mID) {
         this.error = "message: " + error +"\n\n";
         this.body = body;
-        this.mID = mID;
+        this.reciptID = mID;
     }
 
     public byte[] encode(){
 
         String command = "ERROR\n";
-        String tmp = "receipt-id:" + this.mID +"\n";
+        String tmp = "receipt-id:" + this.reciptID +"\n";
         String end = "\0";
-        return  (command + tmp + error + "\n\n" + body + end).getBytes(StandardCharsets.UTF_8); //TODO: understand how to fucking do it
+        return  (command + tmp + error + "\n\n" + body + end).getBytes(StandardCharsets.UTF_8);
     }
 }

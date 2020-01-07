@@ -1,6 +1,6 @@
 package bgu.spl.net.api;
 
-import bgu.spl.net.Frames.Connect;
+import bgu.spl.net.Frames.Connected;
 import bgu.spl.net.Frames.ErrorFrame;
 import bgu.spl.net.Frames.Message;
 import bgu.spl.net.Frames.Receipt;
@@ -59,8 +59,8 @@ public class MessageEncoderDecoderImpl implements MessageEncoderDecoder {
         if(m instanceof ErrorFrame){
             return ((ErrorFrame) m).encode();
         }
-        if(m instanceof Connect){
-            return ((Connect) m).encode();
+        if(m instanceof Connected){
+            return ((Connected) m).encode();
         }
         return new byte[0];
     }
