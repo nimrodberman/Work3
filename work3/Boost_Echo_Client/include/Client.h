@@ -19,7 +19,6 @@ private:
     std::string name;
     int countSubscription;
     int countReceipt;
-    std::queue<Stomp> stompQueue;
 
 
 public:
