@@ -1,9 +1,9 @@
 //
-// Created by oronla@wincs.cs.bgu.ac.il on 03/01/2020.
+// Created by oronla@wincs.cs.bgu.ac.il on 11/01/2020.
 //
 
-#ifndef WORK1_V2_STOMP_H
-#define WORK1_V2_STOMP_H
+#ifndef BOOST_ECHO_CLIENT_STOMP_H
+#define BOOST_ECHO_CLIENT_STOMP_H
 
 
 #include <string>
@@ -19,9 +19,10 @@ private:
 public:
     Stomp(const std::string &stompCommand, const std::vector<std::string> &headers, const std::string &frameBody);
 
+
     std::string toString();
 
-    const std::string &getStompCommand() const;
+    const std::string getStompCommand() const;
 
     const std::vector<std::string> &getHeaders() const;
 
@@ -34,6 +35,4 @@ public:
 };
 
 
-
-};
-#endif //WORK1_V2_STOMP_H
+#endif //BOOST_ECHO_CLIENT_STOMP_H

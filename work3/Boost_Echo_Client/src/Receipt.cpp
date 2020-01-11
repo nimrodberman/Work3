@@ -1,14 +1,18 @@
 //
-// Created by Nimrod on 07/01/2020.
+// Created by oronla@wincs.cs.bgu.ac.il on 11/01/2020.
 //
 
 #include <iostream>
+#include <utility>
 #include "../include/Receipt.h"
 
-Receipt::Receipt(const std::string &action, const std::string &topic) : action(action), topic(topic) {}
+
+Receipt::Receipt(int id,int subscriptionId, const std::string &action, const std::string &topic,
+                 ConnectionHandler &connectionHandler) : id(id), subscription_id(subscriptionId), action(action), topic(topic),
+                                                         connectionHandler(connectionHandler) {}
 
 int Receipt::getCounter() {
-    return counter;
+    return 0;
 }
 
 int Receipt::getId() const {
@@ -19,15 +23,11 @@ const std::string &Receipt::getAction() const {
     return action;
 }
 
-void Receipt::Procces() {
-    if (action == "SUBSCRIBE"){
-        std::cout << "Joined club " << topic << "\n";
-    }
 
-    if(action == "DISCONNECT"){
-        std::cout << "Disconnecting...";
-        // TODO: Close the socket
-    }
+const std::string &Receipt::getTopic() const {
+    return topic;
 }
 
-
+int Receipt::getSubscriptionId() const {
+    return subscription_id;
+}

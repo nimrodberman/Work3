@@ -1,5 +1,5 @@
 //
-// Created by oronla@wincs.cs.bgu.ac.il on 03/01/2020.
+// Created by oronla@wincs.cs.bgu.ac.il on 11/01/2020.
 //
 
 #include "../include/Stomp.h"
@@ -17,13 +17,15 @@ std::string Stomp::toString() {
     }
     output += "\n";
 
-    output += this->frameBody += "\n";
-
-    output += "\\u0000";
+    output += this->frameBody;
+    if(frameBody != ""){
+        output += "\n";
+    }
+    output += "\0";
     return output;
 }
 
-const std::string &Stomp::getStompCommand() const {
+const std::string Stomp::getStompCommand() const {
     return stompCommand;
 }
 
@@ -37,10 +39,6 @@ const std::string &Stomp::getFrameBody() const {
 
 std::vector<char> Stomp::stompToByte() {
     std::string tmp = this->toString();
-    return std::vector<char> (tmp.begin(), tmp.end());
+    std::vector<char> toSend = std::vector<char>(tmp.begin(), tmp.end());
+    return toSend;
 }
-
-
-
-
-

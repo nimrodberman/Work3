@@ -1,5 +1,5 @@
 //
-// Created by Nimrod on 07/01/2020.
+// Created by oronla@wincs.cs.bgu.ac.il on 11/01/2020.
 //
 
 #ifndef BOOST_ECHO_CLIENT_READFROMSERVER_H
@@ -8,12 +8,13 @@
 
 #include "connectionHandler.h"
 #include "Stomp.h"
+#include "Message.h"
 #include "UserData.h"
 
 class ReadFromServer {
 public:
-    ReadFromServer(UserData* u, ConnectionHandler con);
-    void ReadFromServer::operator();
+    ReadFromServer(UserData *data, ConnectionHandler &connectionHandler);
+    void run();
 
 private:
     ConnectionHandler &connectionHandler;
@@ -22,10 +23,11 @@ private:
     void decode(std::string in);
     std::vector<std::string> split(std::string s, std::string delimiter);
     Stomp toStomp(std::vector<std::string> s);
-
     void messageProcceser(Message& mes);
+    void recieptProcceser(Receipt);
 
 };
+
 
 
 #endif //BOOST_ECHO_CLIENT_READFROMSERVER_H

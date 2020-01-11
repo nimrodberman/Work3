@@ -1,5 +1,5 @@
 //
-// Created by Nimrod on 07/01/2020.
+// Created by oronla@wincs.cs.bgu.ac.il on 11/01/2020.
 //
 
 #ifndef BOOST_ECHO_CLIENT_MESSAGE_H
@@ -33,14 +33,13 @@ public:
 
 
 private:
-    int Id;
-    int static counter;
     int subscription;
     int message_id;
     std::string des;
     std::string body;
     bool isDone;
 };
+
 
 
 #endif //BOOST_ECHO_CLIENT_MESSAGE_H

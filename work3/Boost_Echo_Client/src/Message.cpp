@@ -1,12 +1,12 @@
 //
-// Created by Nimrod on 07/01/2020.
+// Created by oronla@wincs.cs.bgu.ac.il on 11/01/2020.
 //
 
 #include "../include/Message.h"
 
+
 Message::Message() {
-    this->Id = counter;
-    counter++;
+
 }
 
 void Message::setSubscription(int subscription) {
@@ -44,5 +44,3 @@ const std::string &Message::getDes() const {
 const std::string &Message::getBody() const {
     return body;
 }
-
-
