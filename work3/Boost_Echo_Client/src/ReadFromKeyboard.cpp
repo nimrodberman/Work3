@@ -119,17 +119,21 @@ bool ReadFromKeyboard::clientCommand() {
         this->userData->addBook(tmp[2],this->userData->getName(),"",tmp[1]);
 
         Stomp stomp = Stomp(input,headers,body);
+        std::cout << stomp.getFrameBody()  << std::endl;
+        headers.clear();
         return connectionHandler.sendFrameAscii(stomp.toString(),'\0');
 
     }
     if(command == "borrow"){
-        this->headers = split(input," ");
+        //TODO long book name
+        std::vector<std::string> tmp = split(input," ");
         this->input = "SEND";
 
-        this->headers[0]= "destination:" + this->headers[0];
-        std::string body =this->userData->getName() + "wish to borrow" +this->headers[1];
+        headers.push_back("destination:" + tmp[1]) ;
+        std::string body =this->userData->getName() + " wish to borrow " + tmp[2];
 
         Stomp stomp = Stomp(command,headers,body);
+        headers.clear();
         return connectionHandler.sendFrameAscii(stomp.toString(),'\0');
     }
 
@@ -147,6 +151,7 @@ bool ReadFromKeyboard::clientCommand() {
             }
         }
         Stomp stomp = Stomp(command,headers,body);
+        headers.clear();
         return connectionHandler.sendFrameAscii(stomp.toString(),'\0');
     }
 
@@ -158,6 +163,7 @@ bool ReadFromKeyboard::clientCommand() {
         std::string body = "book status";
 
         Stomp stomp = Stomp(command,headers,body);
+        headers.clear();
         return connectionHandler.sendFrameAscii(stomp.toString(),'\0');
 
     }
@@ -173,6 +179,7 @@ bool ReadFromKeyboard::clientCommand() {
         this->headers[1] = "receipt:" + std::to_string(receipt.getId()) ;
 
         Stomp stomp = Stomp(command,headers,"");
+        headers.clear();
         return connectionHandler.sendFrameAscii(stomp.toString(),'\0');
     }
 }

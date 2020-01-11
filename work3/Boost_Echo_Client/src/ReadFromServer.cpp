@@ -153,7 +153,7 @@ void ReadFromServer::messageProcceser(Message &mes) {
             std::vector<std::string> header ;
             header[0] = mes.getDes();
             Stomp stomp = Stomp ("SEND" , header , body);
-            connectionHandler.sendBytes(&stomp.stompToByte()[0], stomp.toString().size());
+            connectionHandler.sendFrameAscii(stomp.toString(),'\0');
             //TODO: user the socket to send and syncroniez;
         }
     }
@@ -176,8 +176,7 @@ void ReadFromServer::messageProcceser(Message &mes) {
             std::vector<std::string> header ;
             header[0] = mes.getDes();
             Stomp stomp = Stomp ("SEND" , header , body);
-            connectionHandler.sendBytes(&stomp.stompToByte()[0], stomp.toString().size());
-        }
+            connectionHandler.sendFrameAscii(stomp.toString(),'\0');        }
     }
 
     // case 2.3: borrow
@@ -210,9 +209,8 @@ void ReadFromServer::messageProcceser(Message &mes) {
         body.substr(0,body.size()-2);
 
         Stomp stomp = Stomp ("SEND" , header , body);
-        connectionHandler.sendBytes(&stomp.stompToByte()[0], stomp.toString().size());
+        connectionHandler.sendFrameAscii(stomp.toString(),'\0');
     }
-
 }
 
 
