@@ -14,7 +14,7 @@ public class Connect implements Command {
     private String userName;
     private String passWord;
     private String version;
-    private String reciptID;//TODO: reciptID
+    private String reciptID;
 
     public Connect(String userName, String passWord, String version) {
         this.userName = userName;
@@ -30,6 +30,7 @@ public class Connect implements Command {
 
             // already logged in
             if(u.isConnected()){
+                // TODO: if the  socket was closed by any case so unactive the user
                 con.send(connectionId,new ErrorFrame("User is already logged in","" , this.reciptID));
             }
 
@@ -41,6 +42,7 @@ public class Connect implements Command {
             // successful connection
             else if(u.getPassword().equals(passWord)){
                 u.setConnected(true);
+                u.setConID(connectionId);
                 con.send(connectionId.intValue(),new Connected(this.version));
             }
         }

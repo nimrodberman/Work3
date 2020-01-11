@@ -3,6 +3,7 @@ package bgu.spl.net.actions;
 import bgu.spl.net.Frames.ErrorFrame;
 import bgu.spl.net.Frames.Receipt;
 import bgu.spl.net.api.DataStructure;
+import bgu.spl.net.api.Topic;
 import bgu.spl.net.impl.rci.Command;
 import bgu.spl.net.srv.Connections;
 
@@ -22,8 +23,13 @@ public class Subscribe implements Command {
 
     @Override
     public Serializable execute(Object arg, Integer connectionId, Connections con) throws IOException {
+
+        //TODO:: add a senario that the user is already in the club
         if(!DataStructure.topics.containsKey(topic)){
-            con.send(connectionId,new ErrorFrame("The genre does not exist" , "" , this.receiptID));
+            DataStructure.topics.put(topic, new Topic(topic));
+            DataStructure.topics.get(topic).addUser(DataStructure.userByConnectionID.get(connectionId)); // add user to genre
+            DataStructure.userByConnectionID.get(connectionId).subscribeGenre(this.subscriptionID,DataStructure.topics.get(topic)); //update user info
+            con.send(connectionId,new Receipt(this.receiptID));
         }
 
         else{

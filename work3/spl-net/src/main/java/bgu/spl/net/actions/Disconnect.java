@@ -26,6 +26,7 @@ public class Disconnect implements Command {
         // disconnect
         DataStructure.userByConnectionID.get(connectionId).setConnected(false);
         con.send(connectionId,new Receipt(this.recieptID));
+        con.disconnect(connectionId);
 
         return null;
     }

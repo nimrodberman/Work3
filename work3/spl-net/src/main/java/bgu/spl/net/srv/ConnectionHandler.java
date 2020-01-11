@@ -20,4 +20,5 @@ public interface ConnectionHandler<T> extends Closeable {
 
     void send(T msg) throws IOException;
 
+    <T> void start(Integer con_id, ConnectionsImpl<T> tConnections);
 }

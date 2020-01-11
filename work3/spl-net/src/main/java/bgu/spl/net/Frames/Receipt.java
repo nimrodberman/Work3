@@ -18,9 +18,9 @@ public class Receipt extends ServerToClientFrames{
 
     public byte[] encode(){
 
-        String command = "RECIEPT\n";
+        String command = "RECEIPT\n";
         String tmp = "receipt-id:" + conID;
         String end = "\n\n\0";
-        return  (command + tmp + end).getBytes(StandardCharsets.UTF_8);
+        return  (command + tmp + end).getBytes(StandardCharsets.US_ASCII);
     }
 }

@@ -26,6 +26,6 @@ public class Message extends ServerToClientFrames {
         String msg_id = "Message-id:" + msgID + "\n";
         String gap  = "\n\n";
         String end = "\0";
-        return  (command + id + msg_id + this.topic + gap + end).getBytes(StandardCharsets.UTF_8);
+        return  (command + id + msg_id + "destination:" + this.topic + gap  + body + "\n" + end).getBytes(StandardCharsets.US_ASCII);
     }
 }

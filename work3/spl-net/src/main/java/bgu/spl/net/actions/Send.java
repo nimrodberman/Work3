@@ -20,7 +20,7 @@ public class Send implements Command {
 
     @Override
     public Serializable execute(Object arg, Integer connectionId, Connections con) throws IOException {
-        con.send(this.topic , new Message(DataStructure.topics.get(this.topic).getUsers().get(DataStructure.topics.get(this.topic).getUsers().indexOf(DataStructure.userByConnectionID.get(connectionId))).getSubscription(topic)  ,this.topic , this.body));
+        con.send(this.topic , new Message(DataStructure.userByConnectionID.get(connectionId).getSubscription(topic),topic,body));
         return null;
     }
 }

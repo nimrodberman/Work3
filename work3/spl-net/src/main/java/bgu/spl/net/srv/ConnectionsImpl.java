@@ -25,7 +25,8 @@ public class ConnectionsImpl<T> implements Connections<T> {
     @Override
     public void send(String channel, T msg) throws IOException {
         for (User u: DataStructure.topics.get(channel).getUsers()) {
-            send(u.getConID(), msg);
+            if(DataStructure.userByConnectionID.get(u.getConID()).isConnected())
+                send(u.getConID(), msg);
         }
 
     }
@@ -33,6 +34,8 @@ public class ConnectionsImpl<T> implements Connections<T> {
     public void addConnection(ConnectionHandler con){
         synchronized (connections){
             connections.put(con_id,con);
+            // start the protocol
+            con.start(con_id,this);
             con_id++;
         }
     }

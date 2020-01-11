@@ -59,7 +59,9 @@ public class User {
         Iterator it = this.topicsOfUser.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
-            if (pair.getValue() == topic)
+            System.out.println(pair.getValue().toString());
+            Topic t = (Topic)pair.getValue();
+            if (t.getTopic().equals(topic))
                 return (String) pair.getKey();
         }
         return null;
@@ -71,5 +73,9 @@ public class User {
 
     public Integer getConID() {
         return conID;
+    }
+
+    public void setConID(Integer conID) {
+        this.conID = conID;
     }
 }

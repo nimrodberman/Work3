@@ -2,6 +2,7 @@ package bgu.spl.net.srv;
 
 import bgu.spl.net.api.MessageEncoderDecoder;
 import bgu.spl.net.api.MessagingProtocol;
+import bgu.spl.net.api.MessagingProtocol;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -125,5 +126,11 @@ public class NonBlockingConnectionHandler<T> implements ConnectionHandler<T> {
     public void send(T msg) {
         writeQueue.add(ByteBuffer.wrap(encdec.encode(msg)));
         reactor.updateInterestedOps(chan, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
+    }
+
+    @Override
+    public <T1> void start(Integer con_id, ConnectionsImpl<T1> t1Connections) {
+        this.protocol.start(con_id, (Connections<String>) t1Connections);
+
     }
 }

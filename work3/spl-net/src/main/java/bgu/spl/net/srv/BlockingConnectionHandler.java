@@ -2,6 +2,8 @@ package bgu.spl.net.srv;
 
 import bgu.spl.net.api.MessageEncoderDecoder;
 import bgu.spl.net.api.MessagingProtocol;
+import bgu.spl.net.api.StompMessagingProtocol;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
@@ -57,4 +59,11 @@ public class BlockingConnectionHandler<T> implements Runnable, ConnectionHandler
         out.write(encdec.encode(msg));
         out.flush();
     }
+
+    @Override
+    public <T1> void start(Integer con_id, ConnectionsImpl<T1> t1Connections) {
+        this.protocol.start(con_id, (Connections<String>) t1Connections);
+
+    }
+
 }

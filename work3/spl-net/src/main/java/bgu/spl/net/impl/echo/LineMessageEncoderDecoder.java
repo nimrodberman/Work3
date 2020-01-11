@@ -37,7 +37,7 @@ public class LineMessageEncoderDecoder implements MessageEncoderDecoder<String> 
     private String popString() {
         //notice that we explicitly requesting that the string will be decoded from UTF-8
         //this is not actually required as it is the default encoding in java.
-        String result = new String(bytes, 0, len, StandardCharsets.UTF_8);
+        String result = new String(bytes, 0, len, StandardCharsets.US_ASCII);
         len = 0;
         return result;
     }

@@ -1,6 +1,9 @@
 package bgu.spl.net.impl.newsfeed;
 
 import bgu.spl.net.impl.rci.Command;
+import bgu.spl.net.srv.Connections;
+
+import java.io.IOException;
 import java.io.Serializable;
 
 public class PublishNewsCommand implements Command<NewsFeed> {
@@ -12,11 +15,18 @@ public class PublishNewsCommand implements Command<NewsFeed> {
         this.channel = channel;
         this.news = news;
     }
- 
+
+    /*
     @Override
     public Serializable execute(NewsFeed feed) {
         feed.publish(channel, news);
         return "OK";
     }
- 
+
+     */
+
+    @Override
+    public Serializable execute(NewsFeed arg, Integer connectionId, Connections con) throws IOException {
+        return null;
+    }
 }
