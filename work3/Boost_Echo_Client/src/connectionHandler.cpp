@@ -50,7 +50,6 @@ bool ConnectionHandler::getBytes(char bytes[], unsigned int bytesToRead) {
 }
 
 bool ConnectionHandler::sendBytes(const char bytes[], int bytesToWrite) {
-    std::lock_guard<std::mutex> lock(mutex);
     int tmp = 0;
     boost::system::error_code error;
     try {
@@ -97,6 +96,7 @@ bool ConnectionHandler::getFrameAscii(std::string& frame, char delimiter) {
 
 
 bool ConnectionHandler::sendFrameAscii(const std::string& frame, char delimiter) {
+    std::lock_guard<std::mutex> lock(mutex);
     bool result=sendBytes(frame.c_str(),frame.length());
     if(!result) return false;
     return sendBytes(&delimiter,1);
@@ -116,6 +116,6 @@ bool ConnectionHandler::isTerminate() {
 }
 
 void ConnectionHandler::terminate() {
-    status = false;
+    status = true;
 }
 

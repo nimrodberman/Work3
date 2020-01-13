@@ -13,10 +13,11 @@
 class ReadFromKeyboard{
 
 public:
-    ReadFromKeyboard(UserData *userData, ConnectionHandler &connectionHandler, std::string);
+    ReadFromKeyboard(UserData *userData, ConnectionHandler &connectionHandler, std::string, std::mutex &mutex);
     void run();
     std::vector<std::string> split (std::string s , std::string delimiter);
     bool clientCommand();
+
 
 private:
     ConnectionHandler &connectionHandler;
@@ -25,6 +26,7 @@ private:
     int countSubscription;
     int countReceipt;
     UserData* userData;
+    std::mutex & mutex;
 
 };
 

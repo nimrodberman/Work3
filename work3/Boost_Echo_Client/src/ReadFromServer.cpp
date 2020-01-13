@@ -8,24 +8,26 @@
 #include "../include/Message.h"
 
 
-ReadFromServer::ReadFromServer(UserData *data, ConnectionHandler &connectionHandler)
-        : connectionHandler(connectionHandler), data(data) {};
+ReadFromServer::ReadFromServer(UserData *data, ConnectionHandler &connectionHandler,std::mutex &mutex)
+        : connectionHandler(connectionHandler), data(data), mutex(mutex){};
 
 
 
 void ReadFromServer::run() {
-
+    mutex.lock(); // a mutex for logging out
     while (1) {
-        std::string input;
+        std::string input = "";
         if (data->isConected() && !connectionHandler.getFrameAscii((std::string &)input, '\0')) {
-            std::cout << "Disconnected. Exiting...\n" << std::endl;
+            std::cout << "1Disconnected. Exiting...\n" << std::endl;
             data->setConected(false); // TODO:: think if it is killinig something?
             break;
         }
 
-        decode(input);
+        if(!input.empty()){
+            decode(input);
+        }
         if (connectionHandler.isTerminate()) {
-            std::cout << "Exiting...\n" << std::endl;
+            std::cout << "12Exiting...\n" << std::endl;
             break;
         }
     }
@@ -35,8 +37,10 @@ void ReadFromServer::run() {
 }
 
 void ReadFromServer::decode(std::string in) {
+    std::cout << in + "\n" << std::endl;
     std::vector<std::string> before_stomp = split(in, "\n");
     Stomp stomp = this->toStomp(before_stomp);
+
 
     if (stomp.getStompCommand() == "CONNECTED"){
         // TODO: SYNC printing
@@ -56,15 +60,16 @@ void ReadFromServer::decode(std::string in) {
         }
 
         if (tmp.getAction() == "UNSUBSCRIBE"){
-            data->getSubscription().erase(tmp.getSubscriptionId());
+            data->exitClub(tmp.getSubscriptionId());
             std::cout << "Exited club " << tmp.getTopic() << "\n";
         }
 
         if(tmp.getAction() == "DISCONNECT"){
-            std::cout << "Disconnecting...";
             this->connectionHandler.terminate();
+            data->setConected(false);
             connectionHandler.close();
-            // TODO: Close the socket
+            this->mutex.unlock();
+
         }
 
 
@@ -114,6 +119,7 @@ std::vector<std::string> ReadFromServer::split(std::string s, std::string delimi
 }
 
 Stomp ReadFromServer::toStomp(std::vector<std::string> s) {
+
     std::string command = s[0];
     std::vector <std::string> headers;
     int count = 1;
@@ -122,6 +128,7 @@ Stomp ReadFromServer::toStomp(std::vector<std::string> s) {
         count++;
     }
     std::string body=s[s.size()-2];
+
 
 
     return Stomp(command, headers, body);
@@ -137,79 +144,109 @@ void ReadFromServer::messageProcceser(Message &mes) {
         std::cout << body <<  std::endl;//TODO: what to do?
     }
 
+
     // case 2.1: borrow
     if(words[1] == "wish"){
-        //search for the book in the inventory
-        bool is_exist = false;
-        for(Book book : data->getBooks()){
-            if(book.getBookName() == words[4]){
-                is_exist = true;
+        if(words[0] != data->getName()){ // do only if it is not me that asking
+            // merge book name into one string
+            std::string bookName ="";
+            for(int i = 4; i<words.size(); i++){
+                bookName = bookName + words[i] ;
+                if(i < words.size()-1){
+                    bookName = bookName + + " ";
+                }
             }
-        }
 
-        // send the server that the book is exist
-        if(is_exist){
-            std::string body = data->getName() + " has " + words[4] ;
-            std::vector<std::string> header ;
-            header[0] = mes.getDes();
-            Stomp stomp = Stomp ("SEND" , header , body);
-            connectionHandler.sendFrameAscii(stomp.toString(),'\0');
-            //TODO: user the socket to send and syncroniez;
+            //search for the book in the inventory
+            bool is_exist = data->isBookExist(bookName);
+
+            // send the server that the book is exist
+            if(is_exist){
+                std::string body = data->getName() + " has " + bookName;
+                std::vector<std::string> header ;
+                header.push_back("destination:" + mes.getDes());
+                Stomp stomp = Stomp ("SEND" , header , body);
+                connectionHandler.sendFrameAscii(stomp.toString(),'\0');
+                //TODO: user the socket to send and syncroniez;
+            }
         }
     }
 
     // case 2.2: borrow
-    if(words[1] == "has" && words.size() == 3){
-        //TODO : is it possible that will be already a book with that name?
-        bool is_exist = false;
-        // check if book is already exist
-        for(Book book : data->getBooks()){
-            if(book.getBookName() == words[2]){
-                is_exist = true;
+    if(words[1] == "has" && words[2] != "added") {
+
+        std::string bookName = "";
+        for (int i = 2; i < words.size(); i++) {
+            bookName = bookName + words[i];
+            if (i < words.size() - 1) {
+                bookName = bookName +" ";
             }
         }
-        Book toAdd = Book(words[2],words[0]);
-        toAdd.setBorrower(data->getName());
-        if(!is_exist){
-            data->getBooks().push_back(toAdd);
-            std::string body = "Taking " + words[2] + " from " + words[0] ;
-            std::vector<std::string> header ;
-            header[0] = mes.getDes();
-            Stomp stomp = Stomp ("SEND" , header , body);
-            connectionHandler.sendFrameAscii(stomp.toString(),'\0');        }
+
+        // add the book to the holder library if it is not the user itself
+        if (data->getName() != words[0]) {
+            if (data->findAndRemoveFromWishList(bookName)) {
+                data->addBook(bookName, words[0], data->getName(), mes.getDes());
+                // remember who gave me that book
+                data->addToBorrowList(bookName,words[0]);
+
+                std::string body = "Taking " + bookName + " from " + words[0];
+                std::vector<std::string> header;
+                header.push_back("destination:" + mes.getDes());
+                Stomp stomp = Stomp("SEND", header, body);
+                connectionHandler.sendFrameAscii(stomp.toString(), '\0');
+            }
+        }
     }
 
     // case 2.3: borrow
-    if(words[0] == "Taking"){
-        if(data->getName() == words[3]){
-            for(auto s: data->getBooks()){
-                if(s.getBookName() == words[1]){
-                    //data.getBooks().remove(s); // TODO:deletion
-                }
+
+    if (words[0] == "Taking") {
+        // TODO : CHECK WITH MORE CLIENTS
+        std::string bookName = "";
+        for (int i = 1; i < words.size() - 2; i++) {
+            bookName = bookName + words[i];
+            if (i < words.size() - 3) {
+                bookName = bookName + +" ";
             }
+        }
+        if (data->getName() == words[words.size() - 1]) {
+            data->removeBook(bookName);
         }
     }
 
     // case 3: return
-    if(words[0] == "Returning"){
-        if (this->data->getName() == words[3]){
-            this->data->getBooks().emplace_back(words[1],this->data->getName());
+    if (words[0] == "Returning") {
+
+        // get the book name
+        std::string bookName = "";
+        for (int i = 1; i < words.size() -2; i++) {
+            bookName = bookName + words[i];
+            if (i < words.size() - 3) {
+                bookName = bookName + +" ";
+            }
+        }
+        if (this->data->getName() == words[words.size()-1]){
+            std::string holder = data->getHolder(bookName);
+            if (holder != ""){
+                data->addBook(bookName,holder,data->getName(),mes.getDes());
+                data->removeToBorrowList(bookName);
+            } else{
+                data->addBook(bookName,data->getName(),"",mes.getDes());
+            }
+
         }
     }
 
     // case 4: status
-    if(words[0] == "book"){
+    if (words[1] == "status") {
         std::vector<std::string> header ;
-        header[0] = mes.getDes();
-        std::string body = data->getName() + ":";
-
-        for(auto b : data->getBooks()){
-            body+=b.getBookName() + ",";
-        }
-        body.substr(0,body.size()-2);
-
-        Stomp stomp = Stomp ("SEND" , header , body);
+        header.push_back("destination:" + mes.getDes());
+        std::string tmpBody = data->getBooksInGenere(mes.getDes());
+        Stomp stomp = Stomp ("SEND" , header , tmpBody);
         connectionHandler.sendFrameAscii(stomp.toString(),'\0');
+        // TODO print it?
+
     }
 }
 

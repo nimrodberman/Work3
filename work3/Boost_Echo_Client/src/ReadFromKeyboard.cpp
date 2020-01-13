@@ -7,8 +7,8 @@
 #include "../include/Stomp.h"
 #include "../include/UserData.h"
 
-ReadFromKeyboard::ReadFromKeyboard(UserData *userData, ConnectionHandler &connectionHandler, std::string s)
-        :  connectionHandler(connectionHandler), input(s),countReceipt(1),countSubscription(1),  userData(userData){
+ReadFromKeyboard::ReadFromKeyboard(UserData *userData, ConnectionHandler &connectionHandler, std::string s, std::mutex &mutex)
+        :  connectionHandler(connectionHandler), input(s),countReceipt(1),countSubscription(1),  userData(userData), mutex(mutex){
 }
 
 void ReadFromKeyboard::run() {
@@ -18,13 +18,13 @@ void ReadFromKeyboard::run() {
             getline(std::cin, input);
             //encoding line and send them to server
             if (!clientCommand()) {
-                std::cout << "Disconnected. Exiting...\n" << std::endl;
+                std::cout << "23Disconnected. Exiting...\n" << std::endl;
                 break;
             }
         }
         else{
             if(!clientCommand()){
-                std::cout << "Disconnected. Exiting...\n" << std::endl;
+                std::cout << "34Disconnected. Exiting...\n" << std::endl;
                 break;
             };
         }
@@ -52,6 +52,8 @@ bool ReadFromKeyboard::clientCommand() {
         userData->setConected(true);
         userData->setName(tmp[2]);
 
+        // TODO: if the  socket was closed by any case so unactive the user
+
 
         //update the input for not returning again to login
         this->input = "";
@@ -78,19 +80,13 @@ bool ReadFromKeyboard::clientCommand() {
 
     }
 
-    if(command == "exit"){
+    if(command == "exit"){ // TODO a safe deletion from club
         std::vector<std::string> tmp = split(input," ");
         this->input = "UNSUBSCRIBE";
-        int subscription_id =-1;
+        int subscription_id = userData->isUserInClub(tmp[1]);
 
-        for (auto s : userData->getSubscription()){
-            if(s.second == tmp[1]){
-                subscription_id=s.first;
-               this->headers.push_back( "id:" + std::to_string(subscription_id));
-            }
-        }
-        // TODO: Worng club givin by the user
         if(subscription_id!= -1){
+            this->headers.push_back( "id:" + std::to_string(subscription_id));
             Receipt receipt = Receipt(countReceipt,subscription_id,this->input,tmp[1],this->connectionHandler);
             countReceipt++;
             this->userData->getReceipt().push_back(receipt);
@@ -109,14 +105,23 @@ bool ReadFromKeyboard::clientCommand() {
 
 
     if(command == "add"){
-        // TODO: a book with few names
 
         std::vector<std::string> tmp  = split(input," ");
         this->input = "SEND";
         headers.push_back("destination:" + tmp[1]) ;
-        std::string body =this->userData->getName() + " has added the book " +tmp[2];
 
-        this->userData->addBook(tmp[2],this->userData->getName(),"",tmp[1]);
+        // merge book name into one string
+        std::string bookName ="";
+        for(int i = 2; i<tmp.size(); i++){
+            bookName = bookName + tmp[i] ;
+            if(i < tmp.size()-1){
+                bookName = bookName + + " ";
+            }
+        }
+
+        std::string body =this->userData->getName() + " has added the book " +bookName;
+
+        this->userData->addBook(bookName,this->userData->getName(),"",tmp[1]);
 
         Stomp stomp = Stomp(input,headers,body);
         std::cout << stomp.getFrameBody()  << std::endl;
@@ -125,44 +130,88 @@ bool ReadFromKeyboard::clientCommand() {
 
     }
     if(command == "borrow"){
-        //TODO long book name
         std::vector<std::string> tmp = split(input," ");
         this->input = "SEND";
 
         headers.push_back("destination:" + tmp[1]) ;
-        std::string body =this->userData->getName() + " wish to borrow " + tmp[2];
 
-        Stomp stomp = Stomp(command,headers,body);
+        // merge book name into one string
+        std::string bookName ="";
+        for(int i = 2; i<tmp.size(); i++){
+            bookName = bookName + tmp[i] ;
+            if(i < tmp.size()-1){
+                bookName = bookName + + " ";
+            }
+        }
+
+        userData->addToWishList(bookName);// add the book to the wish list
+        std::string body =this->userData->getName() + " wish to borrow " + bookName;
+
+        Stomp stomp = Stomp("SEND",headers,body);
         headers.clear();
         return connectionHandler.sendFrameAscii(stomp.toString(),'\0');
     }
 
     if(command == "return"){
-        this->headers = split(input," ");
-        this->input = "SEND";
 
-        this->headers[0]= "destination:" + this->headers[0];
-        std::string body = "Returning" + this->headers[1] + "to" + this->userData->getName();
-
-        //remove the book from the client
-        for(auto& s: this->userData->getBooks()){
-            if(s.getBookName() == this->headers[1]){
-                //this->userData.getBooks().remove(s); // TODO: deletion
+        std::vector<std::string> tmp = split(input," ");
+        // merge book name into one string
+        std::string bookName ="";
+        for(int i = 2; i<tmp.size(); i++){
+            bookName = bookName + tmp[i] ;
+            if(i < tmp.size()-1){
+                bookName = bookName + + " ";
             }
         }
-        Stomp stomp = Stomp(command,headers,body);
-        headers.clear();
-        return connectionHandler.sendFrameAscii(stomp.toString(),'\0');
+        this->input = "SEND";
+        this->headers.push_back("destination:" + tmp[1]);
+
+
+
+        // check if the book exist in the user inventory
+        if(!userData->isBookExist(bookName)){
+            headers.clear();
+            std::cout << "You don't have this book!" <<  std::endl;
+            return true;
+        }
+
+        else{ // if user have the book remove it and send the message
+            Book tmp1 = userData->getBook(bookName);
+            // if the user return the book to itself
+            if(tmp1.getHolder() == userData->getName()){
+                headers.clear();
+                std::cout << "You are the owner of the book!" <<  std::endl;
+                return true;
+            }
+            else{// if the user is not the owner of the book
+                userData->removeBook(bookName);
+                std::string body = "Returning " + bookName + " to " + tmp1.getHolder();
+                std::cout << body + "\n" <<  std::endl;
+                Stomp stomp = Stomp("SEND",headers,body);
+                headers.clear();
+                return connectionHandler.sendFrameAscii(stomp.toString(),'\0');
+            }
+        }
+
+
+
     }
 
     if(command == "status"){
-        this->headers = split(input," ");
+        std::vector<std::string> tmp = split(input," ");
+
+        // check if the user in the club
+        if(userData->isUserInClub(tmp[1]) == -1){
+            std::cout << "You are not a member in this club!" <<  std::endl;
+            return true;
+        }
+
         this->input = "SEND";
 
-        this->headers[0]= "destination:" + this->headers[0];
+        headers.push_back( "destination:" + tmp[1]);
         std::string body = "book status";
 
-        Stomp stomp = Stomp(command,headers,body);
+        Stomp stomp = Stomp("SEND",headers,body);
         headers.clear();
         return connectionHandler.sendFrameAscii(stomp.toString(),'\0');
 
@@ -172,15 +221,22 @@ bool ReadFromKeyboard::clientCommand() {
 
         Receipt receipt = Receipt(countReceipt,this->countSubscription,this->input,this->headers[0],connectionHandler);
         countReceipt++;
-        this->userData->getSubscription().insert({this->countSubscription , this->headers[0]});
         this->userData->getReceipt().push_back(receipt);
-        this->countSubscription++;
 
-        this->headers[1] = "receipt:" + std::to_string(receipt.getId()) ;
+        headers.push_back("receipt:" + std::to_string(receipt.getId()));
 
-        Stomp stomp = Stomp(command,headers,"");
+        Stomp stomp = Stomp("DISCONNECT",headers,"");
         headers.clear();
-        return connectionHandler.sendFrameAscii(stomp.toString(),'\0');
+
+        connectionHandler.sendFrameAscii(stomp.toString(),'\0');
+
+        std::lock_guard<std::mutex> lock(mutex); // wait until receipt is arriving and then log out
+        return false;
+    }
+
+    else{
+        std::cout << "Command is no legal!" <<  std::endl;
+        return true;
     }
 }
 

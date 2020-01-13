@@ -15,7 +15,7 @@ std::string Stomp::toString() {
     for (auto &h : this->headers){
         output += h + "\n";
     }
-    output += "\n";
+    output += "\n\n";
 
     output += this->frameBody;
     if(frameBody != ""){

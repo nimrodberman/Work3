@@ -34,6 +34,9 @@ int main () {
     std::string command;
     std::string client_first_input;
     std::mutex mutex;
+    std::mutex mutex1;
+    std::mutex mutex2;
+
 
 
     do {
@@ -41,19 +44,20 @@ int main () {
         int spaceApp = client_first_input.find_first_of(' ', 0);
         command = client_first_input.substr(0,spaceApp);
         if (command == "login"){
-            UserData* data = new UserData();
+            UserData* data = new UserData(mutex1);
             std::vector<std::string> line = split(client_first_input, " ");
             std::vector<std::string> HP = split(line[1], ":");
             int port = stoi(HP[1]);
             ConnectionHandler connectionHandler(HP[0], port, mutex);
-            ReadFromKeyboard readFromKeyboard= ReadFromKeyboard(data , connectionHandler , client_first_input);
-            ReadFromServer readFromServer = ReadFromServer (data , connectionHandler);
+            ReadFromKeyboard readFromKeyboard= ReadFromKeyboard(data , connectionHandler , client_first_input,mutex2);
+            ReadFromServer readFromServer = ReadFromServer (data , connectionHandler,mutex2);
 
             std::thread th1(&ReadFromKeyboard::run, &readFromKeyboard);
             std::thread th2(&ReadFromServer::run, &readFromServer);
             th2.join();
             th1.join();
 
+            delete(data);
         }
     }
     while( command != "exit" );
