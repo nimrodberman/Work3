@@ -14,13 +14,15 @@ string
 string
 -
 
-/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/ReadFromKeyboard.h
+/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/ReadFromServer.h
 connectionHandler.h
 /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/connectionHandler.h
+Stomp.h
+/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Stomp.h
+Message.h
+/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Message.h
 UserData.h
 /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/UserData.h
-Receipt.h
-/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Receipt.h
 
 /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Receipt.h
 string
@@ -62,13 +64,13 @@ boost/asio.hpp
 mutex
 -
 
-/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/src/ReadFromKeyboard.cpp
-../include/ReadFromKeyboard.h
-/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/ReadFromKeyboard.h
-../include/Receipt.h
-/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Receipt.h
+/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/src/ReadFromServer.cpp
+../include/ReadFromServer.h
+/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/ReadFromServer.h
 ../include/Stomp.h
 /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Stomp.h
 ../include/UserData.h
 /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/UserData.h
+../include/Message.h
+/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Message.h
 

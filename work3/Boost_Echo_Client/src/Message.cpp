@@ -9,24 +9,24 @@ Message::Message() {
 
 }
 
-void Message::setSubscription(int subscription) {
-    Message::subscription = subscription;
+void Message::setSubscription(int subscription1) {
+    Message::subscription = subscription1;
 }
 
 void Message::setMessageId(int messageId) {
     message_id = messageId;
 }
 
-void Message::setDes(const std::string &des) {
-    Message::des = des;
+void Message::setDes(const std::string &des1) {
+    Message::des = des1;
 }
 
-void Message::setBody(const std::string &body) {
-    Message::body = body;
+void Message::setBody(const std::string &body1) {
+    Message::body = body1;
 }
 
-void Message::setIsDone(bool isDone) {
-    Message::isDone = isDone;
+void Message::setIsDone(bool isDone1) {
+    Message::isDone = isDone1;
 }
 
 int Message::getSubscription() const {

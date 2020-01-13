@@ -3,12 +3,14 @@
 //
 
 #include "../include/ReadFromKeyboard.h"
+
+#include <utility>
 #include "../include/Receipt.h"
 #include "../include/Stomp.h"
 #include "../include/UserData.h"
 
-ReadFromKeyboard::ReadFromKeyboard(UserData *userData, ConnectionHandler &connectionHandler, std::string s, std::mutex &mutex)
-        :  connectionHandler(connectionHandler), input(s),countReceipt(1),countSubscription(1),  userData(userData), mutex(mutex){
+ReadFromKeyboard::ReadFromKeyboard(UserData *userData, ConnectionHandler &connectionHandler, std::string s, std::mutex &mutex,std::mutex &mutex_login)
+        :  connectionHandler(connectionHandler), input(std::move(s)),countReceipt(1),countSubscription(1),  userData(userData), mutex(mutex),mutex_login(mutex_login){
 }
 
 void ReadFromKeyboard::run() {
@@ -18,15 +20,15 @@ void ReadFromKeyboard::run() {
             getline(std::cin, input);
             //encoding line and send them to server
             if (!clientCommand()) {
-                std::cout << "23Disconnected. Exiting...\n" << std::endl;
+                std::cout << "Disconnected. Exiting...\n" << std::endl;
                 break;
             }
         }
         else{
             if(!clientCommand()){
-                std::cout << "34Disconnected. Exiting...\n" << std::endl;
+                std::cout << "Disconnected. Exiting...\n" << std::endl;
                 break;
-            };
+            }
         }
     }
 }
@@ -39,7 +41,7 @@ bool ReadFromKeyboard::clientCommand() {
     if(command == "login"){
         std::vector<std::string> tmp  = split(input," ");
 
-        this->headers.push_back("accept-version:1.2") ;
+        this->headers.emplace_back("accept-version:1.2") ;
         std::vector<std::string> HP = split(tmp[1], ":");
         this->headers.push_back("host:" + HP[0]) ;// TODO : what is the host ?
         this->headers.push_back("login:" + tmp[2]) ;
@@ -48,17 +50,22 @@ bool ReadFromKeyboard::clientCommand() {
 
 
         Stomp stomp = Stomp("CONNECT",headers,"");
-        connectionHandler.connect();
-        userData->setConected(true);
         userData->setName(tmp[2]);
-
-        // TODO: if the  socket was closed by any case so unactive the user
 
 
         //update the input for not returning again to login
         this->input = "";
         headers.clear();
-        return connectionHandler.sendFrameAscii(stomp.toString(),'\0');
+        if(!userData->isConected()){
+            if(!connectionHandler.connect()){
+                std::cout<< "Could not connect to server" << std::endl;
+                connectionHandler.terminate();
+                return false;
+            }
+        }
+        connectionHandler.sendFrameAscii(stomp.toString(),'\0');
+        userData->setConected(true); // TODO logging in only after reciving recipet
+        return true;
 
 
     }
@@ -80,7 +87,7 @@ bool ReadFromKeyboard::clientCommand() {
 
     }
 
-    if(command == "exit"){ // TODO a safe deletion from club
+    if(command == "exit"){
         std::vector<std::string> tmp = split(input," ");
         this->input = "UNSUBSCRIBE";
         int subscription_id = userData->isUserInClub(tmp[1]);
@@ -111,12 +118,19 @@ bool ReadFromKeyboard::clientCommand() {
         headers.push_back("destination:" + tmp[1]) ;
 
         // merge book name into one string
-        std::string bookName ="";
-        for(int i = 2; i<tmp.size(); i++){
-            bookName = bookName + tmp[i] ;
+        std::string bookName;
+        for(int i = 2; (unsigned)i<tmp.size(); i++){
+            bookName +=  tmp[i] ;
             if(i < tmp.size()-1){
-                bookName = bookName + + " ";
+                bookName += " ";
             }
+        }
+
+        if(userData->isUserInClub(tmp[1]) == -1){
+            headers.clear();
+            std::cout << "You are not a member in this club!" <<  std::endl;
+            return true;
+
         }
 
         std::string body =this->userData->getName() + " has added the book " +bookName;
@@ -124,7 +138,6 @@ bool ReadFromKeyboard::clientCommand() {
         this->userData->addBook(bookName,this->userData->getName(),"",tmp[1]);
 
         Stomp stomp = Stomp(input,headers,body);
-        std::cout << stomp.getFrameBody()  << std::endl;
         headers.clear();
         return connectionHandler.sendFrameAscii(stomp.toString(),'\0');
 
@@ -136,11 +149,11 @@ bool ReadFromKeyboard::clientCommand() {
         headers.push_back("destination:" + tmp[1]) ;
 
         // merge book name into one string
-        std::string bookName ="";
-        for(int i = 2; i<tmp.size(); i++){
-            bookName = bookName + tmp[i] ;
+        std::string bookName;
+        for(int i = 2; (unsigned)i<tmp.size(); i++){
+            bookName += tmp[i] ;
             if(i < tmp.size()-1){
-                bookName = bookName + + " ";
+                bookName += " ";
             }
         }
 
@@ -156,11 +169,11 @@ bool ReadFromKeyboard::clientCommand() {
 
         std::vector<std::string> tmp = split(input," ");
         // merge book name into one string
-        std::string bookName ="";
-        for(int i = 2; i<tmp.size(); i++){
-            bookName = bookName + tmp[i] ;
+        std::string bookName;
+        for(int i = 2; (unsigned)i<tmp.size(); i++){
+            bookName += tmp[i] ;
             if(i < tmp.size()-1){
-                bookName = bookName + + " ";
+                bookName += " ";
             }
         }
         this->input = "SEND";
@@ -186,7 +199,7 @@ bool ReadFromKeyboard::clientCommand() {
             else{// if the user is not the owner of the book
                 userData->removeBook(bookName);
                 std::string body = "Returning " + bookName + " to " + tmp1.getHolder();
-                std::cout << body + "\n" <<  std::endl;
+                //std::cout << body + "\n" <<  std::endl; TODO
                 Stomp stomp = Stomp("SEND",headers,body);
                 headers.clear();
                 return connectionHandler.sendFrameAscii(stomp.toString(),'\0');
@@ -242,7 +255,7 @@ bool ReadFromKeyboard::clientCommand() {
 
 
 
-std::vector<std::string> ReadFromKeyboard::split(std::string s, std::string delimiter) {
+std::vector<std::string> ReadFromKeyboard::split(const std::string& s, const std::string& delimiter) {
     size_t pos_start = 0, pos_end, delim_len = delimiter.length();
     std::string token;
     std::vector<std::string> res;

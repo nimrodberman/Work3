@@ -13,18 +13,20 @@
 
 class ReadFromServer {
 public:
-    ReadFromServer(UserData *data, ConnectionHandler &connectionHandler, std::mutex &mutex);
+    ReadFromServer(UserData *data, ConnectionHandler &connectionHandler, std::mutex &mutex,std::mutex &mutex_login);
     void run();
 
 private:
     ConnectionHandler &connectionHandler;
     UserData* data;
 
-    void decode(std::string in);
-    std::vector<std::string> split(std::string s, std::string delimiter);
-    Stomp toStomp(std::vector<std::string> s);
+    void decode(const std::string& in);
+    static std::vector<std::string> split(const std::string& s, const std::string& delimiter);
+    static Stomp toStomp(std::vector<std::string> s);
     void messageProcceser(Message& mes);
     std::mutex & mutex;
+    std::mutex & mutex_login;
+
 
 
 };

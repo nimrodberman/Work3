@@ -4,17 +4,19 @@
 
 #include "../include/Book.h"
 
+#include <utility>
 
-void Book::setBookName(const std::string &bookName) {
-    Book::bookName = bookName;
+
+void Book::setBookName(const std::string &bookName1) {
+    Book::bookName = bookName1;
 }
 
-void Book::setHolder(const std::string &holder) {
-    Book::holder = holder;
+void Book::setHolder(const std::string &holder1) {
+    Book::holder = holder1;
 }
 
-void Book::setBorrower(const std::string &borrower) {
-    Book::borrower = borrower;
+void Book::setBorrower(const std::string &borrower1) {
+    Book::borrower = borrower1;
 }
 
 const std::string &Book::getBookName() const {
@@ -33,10 +35,8 @@ const std::string &Book::getGenre() const {
     return genre;
 }
 
-void Book::setGenre(const std::string &genre) {
-    Book::genre = genre;
+void Book::setGenre(const std::string &genre1) {
+    Book::genre = genre1;
 }
 
-Book::Book(std::string name, std::string holder): bookName(name),holder(holder) {
-
-}
+Book::Book(std::string name1, std::string holder1): bookName(std::move(name1)),holder(std::move(holder1)) {}

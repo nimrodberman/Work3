@@ -39,27 +39,27 @@ public:
 
     Receipt findAndReturnReciept(int id);
 
-    void addClub(int sub, std::string topic);
+    void addClub(int sub, const std::string& topic);
     void exitClub(int sub);
-    int isUserInClub(std::string des);
+    int isUserInClub(const std::string& des);
 
-    void addToWishList(std::string bookName);
-    bool isBookExist(std::string bookName);
-    bool findAndRemoveFromWishList(std::string bookName);
+    void addToWishList(const std::string& bookName);
+    bool isBookExist(const std::string& bookName);
+    bool findAndRemoveFromWishList(const std::string& bookName);
 
     void setName(const std::string &name);
 
     bool isConected() const;
     void setConected(bool conected);
 
-    void addBook (std::string bookName , std::string holder , std::string borrower, std::string genre);
-    void removeBook(std::string bookName);
-    Book getBook(std::string bookName);
-    std::string getBooksInGenere(std::string genre);
+    void addBook (const std::string& bookName , std::string holder , const std::string& borrower, const std::string& genre);
+    void removeBook(const std::string& bookName);
+    Book getBook(const std::string& bookName);
+    std::string getBooksInGenere(const std::string& genre);
 
-    void addToBorrowList(std::string book, std::string borrower);
-    std::string getHolder(std::string name);
-    void removeToBorrowList(std::string book);
+    void addToBorrowList(const std::string& book, const std::string& borrower);
+    std::string getHolder(const std::string& name);
+    void removeToBorrowList(const std::string& book);
 
     int getBookCounter() const;
 

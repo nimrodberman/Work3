@@ -8,18 +8,18 @@
 #include "../include/Message.h"
 
 
-ReadFromServer::ReadFromServer(UserData *data, ConnectionHandler &connectionHandler,std::mutex &mutex)
-        : connectionHandler(connectionHandler), data(data), mutex(mutex){};
+ReadFromServer::ReadFromServer(UserData *data, ConnectionHandler &connectionHandler,std::mutex &mutex,std::mutex &mutex_login)
+        : connectionHandler(connectionHandler), data(data), mutex(mutex),mutex_login(mutex_login){}
 
 
 
 void ReadFromServer::run() {
-    mutex.lock(); // a mutex for logging out
-    while (1) {
-        std::string input = "";
+    mutex.lock(); // a mutex for logging out and in
+    while (true) {
+        std::string input;
         if (data->isConected() && !connectionHandler.getFrameAscii((std::string &)input, '\0')) {
-            std::cout << "1Disconnected. Exiting...\n" << std::endl;
-            data->setConected(false); // TODO:: think if it is killinig something?
+            std::cout << "Disconnected. Exiting...\n" << std::endl;
+            data->setConected(false);
             break;
         }
 
@@ -27,7 +27,7 @@ void ReadFromServer::run() {
             decode(input);
         }
         if (connectionHandler.isTerminate()) {
-            std::cout << "12Exiting...\n" << std::endl;
+            std::cout << "Exiting...\n" << std::endl;
             break;
         }
     }
@@ -36,15 +36,20 @@ void ReadFromServer::run() {
 
 }
 
-void ReadFromServer::decode(std::string in) {
-    std::cout << in + "\n" << std::endl;
+void ReadFromServer::decode(const std::string& in) {
+
+
     std::vector<std::string> before_stomp = split(in, "\n");
-    Stomp stomp = this->toStomp(before_stomp);
+    Stomp stomp = ReadFromServer::toStomp(before_stomp);
 
 
+    // TODO error frame;
     if (stomp.getStompCommand() == "CONNECTED"){
-        // TODO: SYNC printing
         std::cout << "Login successful" <<  std::endl;
+    }
+
+    if (stomp.getStompCommand() == "ERROR"){
+        std::cout << split(before_stomp[2],":")[1].substr(1,split(before_stomp[2],":")[1].size()-1) <<  std::endl;
     }
 
     if (stomp.getStompCommand() == "RECEIPT"){
@@ -79,7 +84,7 @@ void ReadFromServer::decode(std::string in) {
         Message mes = Message();
 
         // read all the headers and insert them to message
-        for(auto s: stomp.getHeaders()){
+        for(const auto& s: stomp.getHeaders()){
             std::vector<std::string> vec_s = split(s,":");
             if(vec_s[0] == "id"){
                 int sub_number = std::stoi(vec_s[1]);
@@ -103,7 +108,7 @@ void ReadFromServer::decode(std::string in) {
 }
 
 // help function
-std::vector<std::string> ReadFromServer::split(std::string s, std::string delimiter) {
+std::vector<std::string> ReadFromServer::split(const std::string& s, const std::string& delimiter) {
     size_t pos_start = 0, pos_end, delim_len = delimiter.length();
     std::string token;
     std::vector<std::string> res;
@@ -123,7 +128,7 @@ Stomp ReadFromServer::toStomp(std::vector<std::string> s) {
     std::string command = s[0];
     std::vector <std::string> headers;
     int count = 1;
-    while (s[count] != "") {
+    while (!s[count].empty()) {
         headers.push_back(s[count]);
         count++;
     }
@@ -138,22 +143,24 @@ void ReadFromServer::messageProcceser(Message &mes) {
 
     const std::string& body = mes.getBody();
     std::vector<std::string> words = split(body," ");
+    std::cout <<mes.getDes() << ":" << body <<  std::endl;
+
 
     // case 1: add
-    if(words[1] == "has" && words[2] == "added"){
-        std::cout << body <<  std::endl;//TODO: what to do?
+    if(words.size() > 1 && words[1] == "has" && words[2] == "added"){//TODO: erase or not
+
     }
 
 
     // case 2.1: borrow
-    if(words[1] == "wish"){
+    if(words.size() > 1 && words[1] == "wish"){
         if(words[0] != data->getName()){ // do only if it is not me that asking
             // merge book name into one string
-            std::string bookName ="";
-            for(int i = 4; i<words.size(); i++){
-                bookName = bookName + words[i] ;
+            std::string bookName;
+            for(int i = 4; (unsigned )i<words.size(); i++){
+                bookName += words[i] ;
                 if(i < words.size()-1){
-                    bookName = bookName + + " ";
+                    bookName += + " ";
                 }
             }
 
@@ -162,38 +169,38 @@ void ReadFromServer::messageProcceser(Message &mes) {
 
             // send the server that the book is exist
             if(is_exist){
-                std::string body = data->getName() + " has " + bookName;
+                std::string tmpbody = data->getName() + " has " + bookName;
                 std::vector<std::string> header ;
                 header.push_back("destination:" + mes.getDes());
-                Stomp stomp = Stomp ("SEND" , header , body);
+                Stomp stomp = Stomp ("SEND" , header , tmpbody);
                 connectionHandler.sendFrameAscii(stomp.toString(),'\0');
-                //TODO: user the socket to send and syncroniez;
             }
         }
     }
 
     // case 2.2: borrow
-    if(words[1] == "has" && words[2] != "added") {
+    if(words.size() > 1 && words[1] == "has" && words[2] != "added") {
 
-        std::string bookName = "";
-        for (int i = 2; i < words.size(); i++) {
-            bookName = bookName + words[i];
+        std::string bookName;
+        for (int i = 2; (unsigned)i < words.size(); i++) {
+            bookName += words[i];
             if (i < words.size() - 1) {
-                bookName = bookName +" ";
+                bookName += " ";
             }
         }
 
         // add the book to the holder library if it is not the user itself
         if (data->getName() != words[0]) {
             if (data->findAndRemoveFromWishList(bookName)) {
+
                 data->addBook(bookName, words[0], data->getName(), mes.getDes());
                 // remember who gave me that book
                 data->addToBorrowList(bookName,words[0]);
 
-                std::string body = "Taking " + bookName + " from " + words[0];
+                std::string tmpbody = "Taking " + bookName + " from " + words[0];
                 std::vector<std::string> header;
                 header.push_back("destination:" + mes.getDes());
-                Stomp stomp = Stomp("SEND", header, body);
+                Stomp stomp = Stomp("SEND", header, tmpbody);
                 connectionHandler.sendFrameAscii(stomp.toString(), '\0');
             }
         }
@@ -201,13 +208,12 @@ void ReadFromServer::messageProcceser(Message &mes) {
 
     // case 2.3: borrow
 
-    if (words[0] == "Taking") {
-        // TODO : CHECK WITH MORE CLIENTS
-        std::string bookName = "";
-        for (int i = 1; i < words.size() - 2; i++) {
-            bookName = bookName + words[i];
+    if (words.size() > 1 && words[0] == "Taking") {
+        std::string bookName;
+        for (int i = 1; (unsigned)i < words.size() - 2; i++) {
+            bookName += words[i];
             if (i < words.size() - 3) {
-                bookName = bookName + +" ";
+                bookName  += " ";
             }
         }
         if (data->getName() == words[words.size() - 1]) {
@@ -216,21 +222,22 @@ void ReadFromServer::messageProcceser(Message &mes) {
     }
 
     // case 3: return
-    if (words[0] == "Returning") {
+    if (words.size() > 1 && words[0] == "Returning") {
 
         // get the book name
-        std::string bookName = "";
-        for (int i = 1; i < words.size() -2; i++) {
-            bookName = bookName + words[i];
+        std::string bookName;
+        for (int i = 1; (unsigned)i < words.size() -2; i++) {
+            bookName += words[i];
             if (i < words.size() - 3) {
-                bookName = bookName + +" ";
+                bookName += " ";
             }
         }
         if (this->data->getName() == words[words.size()-1]){
             std::string holder = data->getHolder(bookName);
-            if (holder != ""){
+            if (!holder.empty()){
                 data->addBook(bookName,holder,data->getName(),mes.getDes());
                 data->removeToBorrowList(bookName);
+
             } else{
                 data->addBook(bookName,data->getName(),"",mes.getDes());
             }
@@ -239,13 +246,12 @@ void ReadFromServer::messageProcceser(Message &mes) {
     }
 
     // case 4: status
-    if (words[1] == "status") {
+    if (words.size() > 1 && words[1] == "status") {
         std::vector<std::string> header ;
         header.push_back("destination:" + mes.getDes());
         std::string tmpBody = data->getBooksInGenere(mes.getDes());
         Stomp stomp = Stomp ("SEND" , header , tmpBody);
         connectionHandler.sendFrameAscii(stomp.toString(),'\0');
-        // TODO print it?
 
     }
 }

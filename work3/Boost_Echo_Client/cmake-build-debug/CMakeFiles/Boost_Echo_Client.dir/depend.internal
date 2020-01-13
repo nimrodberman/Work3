@@ -4,6 +4,16 @@
 CMakeFiles/Boost_Echo_Client.dir/src/Book.cpp.o
  /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Book.h
  /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/src/Book.cpp
+CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o
+ /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Book.h
+ /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Message.h
+ /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/ReadFromKeyboard.h
+ /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/ReadFromServer.h
+ /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Receipt.h
+ /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Stomp.h
+ /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/UserData.h
+ /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/connectionHandler.h
+ /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/src/Client.cpp
 CMakeFiles/Boost_Echo_Client.dir/src/Message.cpp.o
  /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Message.h
  /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/src/Message.cpp
@@ -42,13 +52,3 @@ CMakeFiles/Boost_Echo_Client.dir/src/UserData.cpp.o
 CMakeFiles/Boost_Echo_Client.dir/src/connectionHandler.cpp.o
  /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/connectionHandler.h
  /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/src/connectionHandler.cpp
-CMakeFiles/Boost_Echo_Client.dir/src/main.cpp.o
- /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Book.h
- /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Message.h
- /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/ReadFromKeyboard.h
- /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/ReadFromServer.h
- /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Receipt.h
- /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Stomp.h
- /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/UserData.h
- /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/connectionHandler.h
- /users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/src/main.cpp

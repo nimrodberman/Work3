@@ -7,8 +7,8 @@
 #include "../include/Receipt.h"
 
 
-Receipt::Receipt(int id,int subscriptionId, const std::string &action, const std::string &topic,
-                 ConnectionHandler &connectionHandler) : id(id), subscription_id(subscriptionId), action(action), topic(topic),
+Receipt::Receipt(int id,int subscriptionId, std::string action, std::string topic,
+                 ConnectionHandler &connectionHandler) : id(id), subscription_id(subscriptionId), action(std::move(action)), topic(std::move(topic)),
                                                          connectionHandler(connectionHandler) {}
 
 int Receipt::getCounter() {

@@ -150,6 +150,33 @@ src/Book.cpp.s:
 	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/Book.cpp.s
 .PHONY : src/Book.cpp.s
 
+src/Client.o: src/Client.cpp.o
+
+.PHONY : src/Client.o
+
+# target to build an object file
+src/Client.cpp.o:
+	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o
+.PHONY : src/Client.cpp.o
+
+src/Client.i: src/Client.cpp.i
+
+.PHONY : src/Client.i
+
+# target to preprocess a source file
+src/Client.cpp.i:
+	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.i
+.PHONY : src/Client.cpp.i
+
+src/Client.s: src/Client.cpp.s
+
+.PHONY : src/Client.s
+
+# target to generate assembly for a file
+src/Client.cpp.s:
+	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.s
+.PHONY : src/Client.cpp.s
+
 src/Message.o: src/Message.cpp.o
 
 .PHONY : src/Message.o
@@ -339,33 +366,6 @@ src/connectionHandler.cpp.s:
 	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/connectionHandler.cpp.s
 .PHONY : src/connectionHandler.cpp.s
 
-src/main.o: src/main.cpp.o
-
-.PHONY : src/main.o
-
-# target to build an object file
-src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
-
-src/main.i: src/main.cpp.i
-
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
-
-src/main.s: src/main.cpp.s
-
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/Boost_Echo_Client.dir/build.make CMakeFiles/Boost_Echo_Client.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -378,6 +378,9 @@ help:
 	@echo "... src/Book.o"
 	@echo "... src/Book.i"
 	@echo "... src/Book.s"
+	@echo "... src/Client.o"
+	@echo "... src/Client.i"
+	@echo "... src/Client.s"
 	@echo "... src/Message.o"
 	@echo "... src/Message.i"
 	@echo "... src/Message.s"
@@ -399,9 +402,6 @@ help:
 	@echo "... src/connectionHandler.o"
 	@echo "... src/connectionHandler.i"
 	@echo "... src/connectionHandler.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
 .PHONY : help
 
 

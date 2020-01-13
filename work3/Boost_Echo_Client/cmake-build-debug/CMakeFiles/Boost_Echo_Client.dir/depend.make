@@ -4,6 +4,16 @@
 CMakeFiles/Boost_Echo_Client.dir/src/Book.cpp.o: ../include/Book.h
 CMakeFiles/Boost_Echo_Client.dir/src/Book.cpp.o: ../src/Book.cpp
 
+CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o: ../include/Book.h
+CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o: ../include/Message.h
+CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o: ../include/ReadFromKeyboard.h
+CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o: ../include/ReadFromServer.h
+CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o: ../include/Receipt.h
+CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o: ../include/Stomp.h
+CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o: ../include/UserData.h
+CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o: ../include/connectionHandler.h
+CMakeFiles/Boost_Echo_Client.dir/src/Client.cpp.o: ../src/Client.cpp
+
 CMakeFiles/Boost_Echo_Client.dir/src/Message.cpp.o: ../include/Message.h
 CMakeFiles/Boost_Echo_Client.dir/src/Message.cpp.o: ../src/Message.cpp
 
@@ -41,14 +51,4 @@ CMakeFiles/Boost_Echo_Client.dir/src/UserData.cpp.o: ../src/UserData.cpp
 
 CMakeFiles/Boost_Echo_Client.dir/src/connectionHandler.cpp.o: ../include/connectionHandler.h
 CMakeFiles/Boost_Echo_Client.dir/src/connectionHandler.cpp.o: ../src/connectionHandler.cpp
-
-CMakeFiles/Boost_Echo_Client.dir/src/main.cpp.o: ../include/Book.h
-CMakeFiles/Boost_Echo_Client.dir/src/main.cpp.o: ../include/Message.h
-CMakeFiles/Boost_Echo_Client.dir/src/main.cpp.o: ../include/ReadFromKeyboard.h
-CMakeFiles/Boost_Echo_Client.dir/src/main.cpp.o: ../include/ReadFromServer.h
-CMakeFiles/Boost_Echo_Client.dir/src/main.cpp.o: ../include/Receipt.h
-CMakeFiles/Boost_Echo_Client.dir/src/main.cpp.o: ../include/Stomp.h
-CMakeFiles/Boost_Echo_Client.dir/src/main.cpp.o: ../include/UserData.h
-CMakeFiles/Boost_Echo_Client.dir/src/main.cpp.o: ../include/connectionHandler.h
-CMakeFiles/Boost_Echo_Client.dir/src/main.cpp.o: ../src/main.cpp
 

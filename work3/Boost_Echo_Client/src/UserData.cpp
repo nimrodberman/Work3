@@ -3,6 +3,8 @@
 //
 
 #include "../include/UserData.h"
+
+#include <utility>
 #include "../include/Receipt.h"
 
 
@@ -12,14 +14,13 @@ UserData::UserData(std::mutex &mutex):bookCounter(0), name(name), Books(Books), 
     borrowList = std::unordered_map<std::string , std::string>();
 }
 
-std::vector<Receipt> &UserData::getReceipt()  { // only read - no need for syn TODO true?
+std::vector<Receipt> &UserData::getReceipt()  { // only read - no need for syn
     return receipt;
 }
 
-std::vector<Message> &UserData::getMessages()  { // only read - no need for syn TODO true?
+std::vector<Message> &UserData::getMessages()  { // only read - no need for syn
     return messages;
 }
-
 
 
 
@@ -42,9 +43,9 @@ std::unordered_map<std::string,Book> &UserData::getBooks()  {
     return Books;
 }
 
-void UserData::setConected(bool conected) {
+void UserData::setConected(bool conected1) {
     std::lock_guard<std::mutex> lock(mutex);
-    UserData::conected = conected;
+    UserData::conected = conected1;
 }
 
 bool UserData::isConected() const {
@@ -52,8 +53,8 @@ bool UserData::isConected() const {
     return conected;
 }
 
-void UserData::addClub(int sub, std::string topic) {
-    subscription.insert({sub,topic});
+void UserData::addClub(int sub, const std::string& topic1) {
+    subscription.insert({sub,topic1});
 }
 
 void UserData::exitClub(int sub) {
@@ -61,30 +62,30 @@ void UserData::exitClub(int sub) {
 
 }
 
-void UserData::setName(const std::string &name) {
+void UserData::setName(const std::string &name1) {
     std::lock_guard<std::mutex> lock(mutex);
-    UserData::name = name;
+    UserData::name = name1;
 }
 
-void UserData::addBook(std::string bookName, std::string holder, std::string borrower, std::string genre) {
+void UserData::addBook(const std::string& bookName1, std::string holder1, const std::string& borrower, const std::string& genre) {
     std::lock_guard<std::mutex> lock(mutex);
-    Book book = Book(bookName,holder);
+    Book book = Book(bookName1,std::move(holder1));
     book.setBorrower(borrower);
     book.setGenre(genre);
     bookCounter++;
-    this->Books.insert({bookName,book});
+    this->Books.insert({bookName1,book});
 
 }
-`
-void UserData::addToWishList(std::string bookName) {
+
+void UserData::addToWishList(const std::string& bookName) {
     std::lock_guard<std::mutex> lock(mutex);
     wishList.push_back(bookName);
 
 }
 
-bool UserData::findAndRemoveFromWishList(std::string bookName) {
+bool UserData::findAndRemoveFromWishList(const std::string& bookName) {
     std::lock_guard<std::mutex> lock(mutex);
-    for(auto book : wishList){
+    for(const auto& book : wishList){
         if(book == bookName){
             wishList.remove(book);
             return true;
@@ -93,15 +94,15 @@ bool UserData::findAndRemoveFromWishList(std::string bookName) {
     return false;
 }
 
-void UserData::removeBook(std::string bookName) {
+void UserData::removeBook(const std::string& bookName) {
     std::lock_guard<std::mutex> lock(mutex);
     bookCounter--;
     this->Books.erase(bookName);
 }
 
-bool UserData::isBookExist(std::string bookName) {
+bool UserData::isBookExist(const std::string& bookName) {
     std::lock_guard<std::mutex> lock(mutex);
-    for(auto book : Books){
+    for(const auto& book : Books){
         if(book.second.getBookName() == bookName){
             return true;
         }
@@ -109,7 +110,7 @@ bool UserData::isBookExist(std::string bookName) {
     return false;
 }
 
-Book UserData::getBook(std::string bookName) {
+Book UserData::getBook(const std::string& bookName) {
     std::lock_guard<std::mutex> lock(mutex);
     return Books.find(bookName)._M_cur->_M_v().second;
 }
@@ -119,52 +120,50 @@ int UserData::getBookCounter() const {
     return bookCounter;
 }
 
-std::string UserData::getBooksInGenere(std::string genre) {
+std::string UserData::getBooksInGenere(const std::string& genre) {
     std::lock_guard<std::mutex> lock(mutex);
-    std::string body = name + ": ";
+    std::string body = name + ":";
     int i = 0;
     for(auto &b : Books){
         i++;
         if(b.second.getGenre() == genre)
-            body = body + b.first;
-        if(i<bookCounter)
-            body = body + ",";
+            body += b.first +",";
     }
-    return  body;
+    return  body.substr(0,body.size()-1);
 }
 
-int UserData::isUserInClub(std::string des) {
+int UserData::isUserInClub(const std::string& des) {
     std::lock_guard<std::mutex> lock(mutex);
     int subscription_id =-1;
 
-    for (auto s : subscription){
+    for (const auto& s : subscription){
         if(s.second == des){
             subscription_id=s.first;
-            subscription_id;
+            return subscription_id;
         }
     }
     return subscription_id;
 
 }
 
-void UserData::addToBorrowList(std::string book, std::string borrower) {
+void UserData::addToBorrowList(const std::string& book, const std::string& holder) {
     std::lock_guard<std::mutex> lock(mutex);
-    borrowList.insert({book,borrower});
+    borrowList.insert({book,holder});
 
 }
 
-std::string UserData::getHolder(std::string bookname) {
+std::string UserData::getHolder(const std::string& bookname) {
     std::lock_guard<std::mutex> lock(mutex);
-    std::string ans ="";
+    std::string ans;
     for(auto& s: borrowList){
-        if(bookname == s.second){
+        if(bookname == s.first){
             return  s.second;
         }
     }
     return ans;
 }
 
-void UserData::removeToBorrowList(std::string book) {
+void UserData::removeToBorrowList(const std::string& book) {
     std::lock_guard<std::mutex> lock(mutex);
     borrowList.erase(book);
 }

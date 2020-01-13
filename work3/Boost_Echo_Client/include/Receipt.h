@@ -12,7 +12,7 @@
 
 class Receipt {
 public:
-    Receipt(int id,int subscriptionId, const std::string &action, const std::string &topic, ConnectionHandler &connectionHandler);
+    Receipt(int id,int subscriptionId, std::string action, std::string topic, ConnectionHandler &connectionHandler);
 
 
 private:
