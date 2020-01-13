@@ -15,16 +15,20 @@ ReadFromServer::ReadFromServer(UserData *data, ConnectionHandler &connectionHand
 
 void ReadFromServer::run() {
 
+
     while (1) {
-        std::string input;
+        std::string input = "";
         if (data->isConected() && !connectionHandler.getFrameAscii((std::string &)input, '\0')) {
             std::cout << "Disconnected. Exiting...\n" << std::endl;
             data->setConected(false); // TODO:: think if it is killinig something?
             break;
         }
 
-        decode(input);
+        if(!input.empty()){
+            decode(input);
+        }
         if (connectionHandler.isTerminate()) {
+            data->setConected(false);
             std::cout << "Exiting...\n" << std::endl;
             break;
         }
@@ -35,8 +39,10 @@ void ReadFromServer::run() {
 }
 
 void ReadFromServer::decode(std::string in) {
+    std::cout << in + "\n" << std::endl;
     std::vector<std::string> before_stomp = split(in, "\n");
     Stomp stomp = this->toStomp(before_stomp);
+
 
     if (stomp.getStompCommand() == "CONNECTED"){
         // TODO: SYNC printing
@@ -114,6 +120,7 @@ std::vector<std::string> ReadFromServer::split(std::string s, std::string delimi
 }
 
 Stomp ReadFromServer::toStomp(std::vector<std::string> s) {
+
     std::string command = s[0];
     std::vector <std::string> headers;
     int count = 1;
@@ -122,6 +129,7 @@ Stomp ReadFromServer::toStomp(std::vector<std::string> s) {
         count++;
     }
     std::string body=s[s.size()-2];
+
 
 
     return Stomp(command, headers, body);

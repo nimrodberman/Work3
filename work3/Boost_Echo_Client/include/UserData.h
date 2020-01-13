@@ -21,6 +21,7 @@ class UserData {
 private:
     std::string name;
     std::list<Book> Books;
+    //std::list<std::string> wishList;
     std::vector<Receipt> receipt;
     std::vector<Message> messages;
     std::unordered_map<int , std::string>  subscription;
@@ -35,8 +36,12 @@ public:
     std::unordered_map<int, std::string> &getSubscription() ;
     Receipt findAndReturnReciept(int id);
 
+
     void addClub(int sub, std::string topic);
     void exitClub(int sub);
+
+    //void addToWishList();
+    //bool findAndRemoveFromWishList();
 
     void setName(const std::string &name);
 

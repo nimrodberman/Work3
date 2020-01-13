@@ -8,28 +8,28 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug"/>
+				<Option working_dir="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug"/>
+				<Option working_dir="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Boost_Echo_Client">
-				<Option output="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Boost_Echo_Client" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug"/>
+				<Option output="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Boost_Echo_Client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -44,15 +44,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 Boost_Echo_Client"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 Boost_Echo_Client"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Boost_Echo_Client/fast">
-				<Option output="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Boost_Echo_Client" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug"/>
+				<Option output="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Boost_Echo_Client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -67,75 +67,75 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 Boost_Echo_Client/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 Boost_Echo_Client/fast"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug"/>
+				<Option working_dir="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j6 -f &quot;/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/include/Book.h">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Book.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/include/Message.h">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Message.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/include/ReadFromKeyboard.h">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/ReadFromKeyboard.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/include/ReadFromServer.h">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/ReadFromServer.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/include/Receipt.h">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Receipt.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/include/Stomp.h">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/Stomp.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/include/UserData.h">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/UserData.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/include/connectionHandler.h">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/include/connectionHandler.h">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/src/Book.cpp">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/src/Book.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/src/Message.cpp">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/src/Message.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/src/ReadFromKeyboard.cpp">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/src/ReadFromKeyboard.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/src/ReadFromServer.cpp">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/src/ReadFromServer.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/src/Receipt.cpp">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/src/Receipt.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/src/Stomp.cpp">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/src/Stomp.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/src/UserData.cpp">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/src/UserData.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/src/connectionHandler.cpp">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/src/connectionHandler.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/src/main.cpp">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/src/main.cpp">
 			<Option target="Boost_Echo_Client"/>
 		</Unit>
-		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_11.1/Boost_Echo_Client/CMakeLists.txt">
+		<Unit filename="/users/studs/bsc/2020/oronla/Desktop/work3_12.1/Boost_Echo_Client/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

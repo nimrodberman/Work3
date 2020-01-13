@@ -114,9 +114,18 @@ bool ReadFromKeyboard::clientCommand() {
         std::vector<std::string> tmp  = split(input," ");
         this->input = "SEND";
         headers.push_back("destination:" + tmp[1]) ;
-        std::string body =this->userData->getName() + " has added the book " +tmp[2];
+        // merge book name into one string TODO : test it
 
-        this->userData->addBook(tmp[2],this->userData->getName(),"",tmp[1]);
+        std::string bookName ="";
+        for(int i = 2; i<tmp.size(); i++){
+            bookName = bookName + tmp[i] + " ";
+
+        }
+
+
+        std::string body =this->userData->getName() + " has added the book " +bookName;
+
+        this->userData->addBook(bookName,this->userData->getName(),"",tmp[1]);
 
         Stomp stomp = Stomp(input,headers,body);
         std::cout << stomp.getFrameBody()  << std::endl;
@@ -132,7 +141,7 @@ bool ReadFromKeyboard::clientCommand() {
         headers.push_back("destination:" + tmp[1]) ;
         std::string body =this->userData->getName() + " wish to borrow " + tmp[2];
 
-        Stomp stomp = Stomp(command,headers,body);
+        Stomp stomp = Stomp("SEND",headers,body);
         headers.clear();
         return connectionHandler.sendFrameAscii(stomp.toString(),'\0');
     }
