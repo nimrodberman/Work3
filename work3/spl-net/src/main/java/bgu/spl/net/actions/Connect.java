@@ -30,7 +30,6 @@ public class Connect implements Command {
 
             // already logged in
             if(u.isConnected()){
-                // TODO: if the  socket was closed by any case so unactive the user
                 con.send(connectionId,new ErrorFrame("User is already logged in","" , this.reciptID));
             }
 
@@ -41,8 +40,11 @@ public class Connect implements Command {
 
             // successful connection
             else if(u.getPassword().equals(passWord)){
+                int old = connectionId;
                 u.setConnected(true);
                 u.setConID(connectionId);
+                System.out.println("put the user with" + connectionId);
+                DataStructure.userByConnectionID.put(connectionId, u);
                 con.send(connectionId.intValue(),new Connected(this.version));
             }
         }

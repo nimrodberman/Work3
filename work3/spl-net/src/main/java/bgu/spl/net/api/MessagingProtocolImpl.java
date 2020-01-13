@@ -40,6 +40,9 @@ public class MessagingProtocolImpl<T> implements MessagingProtocol<T> {
         }
 
         if (command.equals("UNSUBSCRIBE")){
+            for(String s: arr){
+                System.out.println(s);
+            }
             String[] id = arr[1].split(":");
             String[] recId = arr[2].split(":");
             System.out.println("UnSubscribe recived " + id[1]);
@@ -47,6 +50,7 @@ public class MessagingProtocolImpl<T> implements MessagingProtocol<T> {
         }
 
         if (command.equals("DISCONNECT")){
+            System.out.println("DISCONNECT recived");
             String[] rec = arr[1].split(":");
             new Disconnect(rec[1]).execute(message,connectionID,connections);
             shouldTerminate = true;
@@ -57,8 +61,10 @@ public class MessagingProtocolImpl<T> implements MessagingProtocol<T> {
                 System.out.println(s);
             }
             System.out.println("Send recived");
+
             String[] des = arr[1].split(":");
-            String body = arr[3];
+            String body = arr[4];
+
             new Send(des[1] , body).execute(message , connectionID , connections);
             }
 

@@ -20,6 +20,8 @@ public class Send implements Command {
 
     @Override
     public Serializable execute(Object arg, Integer connectionId, Connections con) throws IOException {
+        // TODO: bad destanition given
+
         con.send(this.topic , new Message(DataStructure.userByConnectionID.get(connectionId).getSubscription(topic),topic,body));
         return null;
     }

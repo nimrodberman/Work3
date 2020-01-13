@@ -26,7 +26,7 @@ public class Unsubscribe implements Command {
         }
         //the topic exist
         else {
-            DataStructure.topics.get(DataStructure.userByConnectionID.get(connectionId).getTopicBySubscription(this.subscriptionID).getTopic()).removeUser(DataStructure.userByConnectionID.get(Integer.parseInt(this.subscriptionID)));
+            DataStructure.topics.get(DataStructure.userByConnectionID.get(connectionId).getTopicBySubscription(this.subscriptionID).getTopic()).removeUser(DataStructure.userByConnectionID.get(connectionId));
             DataStructure.userByConnectionID.get(connectionId).unsubscribeGenre(this.subscriptionID);
             con.send(connectionId, new Receipt(this.receiptID));
         }

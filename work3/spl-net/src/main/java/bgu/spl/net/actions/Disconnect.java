@@ -19,7 +19,7 @@ public class Disconnect implements Command {
     @Override
     public Serializable execute(Object arg, Integer connectionId, Connections con) throws IOException {
         // TODO: understand if books are deleted as well?
-
+        System.out.println(connectionId);
         //assume that the user is active
         // delete from each Genre and delete user genre list
         DataStructure.userByConnectionID.get(connectionId).clearAllGenres();
