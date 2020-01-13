@@ -23,7 +23,7 @@ public class Connect implements Command {
     }
 
     @Override
-    public Serializable execute(Object arg, Integer connectionId , Connections con) throws IOException {//TODO: socket error?
+    public Serializable execute(Object arg, Integer connectionId , Connections con) throws IOException {
         // check if user exist
         if(DataStructure.usersArchiveByName.containsKey(userName)){
             User u = DataStructure.usersArchiveByName.get(userName);
@@ -43,7 +43,6 @@ public class Connect implements Command {
                 int old = connectionId;
                 u.setConnected(true);
                 u.setConID(connectionId);
-                System.out.println("put the user with" + connectionId);
                 DataStructure.userByConnectionID.put(connectionId, u);
                 con.send(connectionId.intValue(),new Connected(this.version));
             }
@@ -54,7 +53,6 @@ public class Connect implements Command {
             u.setConnected(true);
             DataStructure.usersArchiveByName.put(this.userName , u);
             DataStructure.userByConnectionID.put(connectionId , u);
-
             con.send(connectionId, new Connected(this.version));
         }
         return null;

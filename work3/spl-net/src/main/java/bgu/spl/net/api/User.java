@@ -50,7 +50,7 @@ public class User {
     public void clearAllGenres(){
         // Remove the user from all genre lists]
         for (Topic topic: this.topicsOfUser.values()) {
-            DataStructure.topics.get(topic).removeUser(this);
+            DataStructure.topics.get(topic.getTopic()).removeUser(this);
         }
         topicsOfUser.clear();
     }

@@ -2,7 +2,7 @@ package bgu.spl.net.Frames;
 
 import java.nio.charset.StandardCharsets;
 
-public class ErrorFrame extends ServerToClientFrames {//TODO: understand how to fucking do it
+public class ErrorFrame extends ServerToClientFrames {
 
     private String error;
     private String body;
@@ -19,6 +19,6 @@ public class ErrorFrame extends ServerToClientFrames {//TODO: understand how to 
         String command = "ERROR\n";
         String tmp = "receipt-id:" + this.reciptID +"\n";
         String end = "\0";
-        return  (command + tmp + error + "\n\n" + body + end).getBytes(StandardCharsets.US_ASCII);
+        return  (command + tmp + error  + body + end).getBytes(StandardCharsets.US_ASCII);
     }
 }

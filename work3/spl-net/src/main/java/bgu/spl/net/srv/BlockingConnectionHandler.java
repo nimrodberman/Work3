@@ -21,7 +21,7 @@ public class BlockingConnectionHandler<T> implements Runnable, ConnectionHandler
     public BlockingConnectionHandler(Socket sock, MessageEncoderDecoder<T> reader, MessagingProtocol<T> protocol) {
         this.sock = sock;
         this.encdec = reader;
-        this.protocol = protocol; // TODO: add start and understand the protocol;
+        this.protocol = protocol;
 
     }
 

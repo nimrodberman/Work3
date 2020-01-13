@@ -24,7 +24,6 @@ public class Subscribe implements Command {
     @Override
     public Serializable execute(Object arg, Integer connectionId, Connections con) throws IOException {
 
-        //TODO:: add a senario that the user is already in the club
         if(!DataStructure.topics.containsKey(topic)){
             DataStructure.topics.put(topic, new Topic(topic));
             DataStructure.topics.get(topic).addUser(DataStructure.userByConnectionID.get(connectionId)); // add user to genre

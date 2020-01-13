@@ -40,7 +40,6 @@ public class ConnectionsImpl<T> implements Connections<T> {
         }
     }
 
-    // TODO: think if we need to add remove connection
 
     @Override
     public void disconnect(int connectionId) {

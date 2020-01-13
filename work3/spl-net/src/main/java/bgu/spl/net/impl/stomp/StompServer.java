@@ -16,8 +16,8 @@ public class StompServer {
 
 
 
-        Server.threadPerClient(
-                //Runtime.getRuntime().availableProcessors(),
+        Server.reactor(
+                Runtime.getRuntime().availableProcessors(),
                 7777, //port
                 () -> new MessagingProtocolImpl<String>(), //protocol factory
                 MessageEncoderDecoderImpl::new //message encoder decoder factory

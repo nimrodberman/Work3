@@ -12,7 +12,7 @@ public class Receipt extends ServerToClientFrames{
 
     public Receipt(String conID) {
 
-        // TODO: understand how to serialize the object and how to decode it
+
         this.conID = conID;
     }
 
